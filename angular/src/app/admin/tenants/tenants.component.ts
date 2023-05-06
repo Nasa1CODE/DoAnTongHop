@@ -6,7 +6,6 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { CommonLookupServiceProxy, EntityDtoOfInt64, FindUsersInput, NameValueDto, TenantListDto, TenantServiceProxy } from '@shared/service-proxies/service-proxies';
 import * as moment from 'moment';
-import { LazyLoadEvent } from 'primeng/public_api';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 import { CreateTenantModalComponent } from './create-tenant-modal.component';
@@ -15,6 +14,7 @@ import { TenantFeaturesModalComponent } from './tenant-features-modal.component'
 import { EntityTypeHistoryModalComponent } from '@app/shared/common/entityHistory/entity-type-history-modal.component';
 import * as _ from 'lodash';
 import { finalize } from 'rxjs/operators';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
     templateUrl: './tenants.component.html',

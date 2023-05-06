@@ -48,6 +48,7 @@ import { CheckboxInputTypeComponent } from './input-types/checkbox-input-type/ch
 import { MultipleSelectComboboxInputTypeComponent } from './input-types/multiple-select-combobox-input-type/multiple-select-combobox-input-type.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -66,7 +67,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
         PerfectScrollbarModule,
         CountoModule,
         AppBsModalModule,
-        AutoCompleteModule
+        AutoCompleteModule,
+    
     ],
     declarations: [
         TimeZoneComboComponent,
@@ -93,7 +95,9 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
         SingleLineStringInputTypeComponent,
         ComboboxInputTypeComponent,
         CheckboxInputTypeComponent,
-        MultipleSelectComboboxInputTypeComponent
+        MultipleSelectComboboxInputTypeComponent,
+        //SimpleAgGridComponent
+        
     ],
     exports: [
         TimeZoneComboComponent,

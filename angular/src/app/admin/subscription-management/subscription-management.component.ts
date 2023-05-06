@@ -15,8 +15,8 @@ import {
     SubscriptionStartType,
     SubscriptionPaymentType
 } from '@shared/service-proxies/service-proxies';
+import { LazyLoadEvent } from 'primeng/api';
 
-import { LazyLoadEvent } from 'primeng/public_api';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';

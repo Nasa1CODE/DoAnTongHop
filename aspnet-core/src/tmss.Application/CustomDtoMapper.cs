@@ -32,6 +32,7 @@ using tmss.Friendships.Cache;
 using tmss.Friendships.Dto;
 using tmss.Localization.Dto;
 using tmss.Master.Dish.Dto;
+using tmss.Master.Employee.Dto;
 using tmss.Master.Table.Dto;
 using tmss.MultiTenancy;
 using tmss.MultiTenancy.Dto;
@@ -178,6 +179,12 @@ namespace tmss
             configuration.CreateMap<CreateOrEditMstDishDto, MstDishAppService>();
             #endregion
 
+
+            #region Employee
+            configuration.CreateMap<MstEmployeeDto, MstEmployeeAppService>();
+            configuration.CreateMap<MstEmployeeAppService, MstEmployeeDto>();
+            configuration.CreateMap<CreateOrEditMstEmployeeDto, MstEmployeeAppService>();
+            #endregion
             //
             /* ADD YOUR OWN CUSTOM AUTOMAPPER MAPPINGS HERE */
         }

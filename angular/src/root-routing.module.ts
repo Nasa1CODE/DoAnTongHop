@@ -9,6 +9,12 @@ const routes: Routes = [
         loadChildren: () => import('account/account.module').then(m => m.AccountModule), //Lazy load account module
         data: { preload: true }
     },
+    {
+        path: 'app/main/master/table-dish',
+        loadChildren: () => import('@app/main/master/table-dish/table-dish.module').then(m => m.TableDishModule),
+        data: { preload: true }
+       
+    },
     { path: '**', redirectTo: '/app/main/dashboard' }
 ];
 

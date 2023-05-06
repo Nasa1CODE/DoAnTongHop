@@ -3,12 +3,12 @@ import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { NameValueDto, PagedResultDtoOfNameValueDto } from '@shared/service-proxies/service-proxies';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { LazyLoadEvent } from 'primeng/public_api';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { finalize } from 'rxjs/operators';
+import { LazyLoadEvent } from 'primeng/api';
 
 export interface ICommonLookupModalOptions {
     title?: string;

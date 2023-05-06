@@ -40,6 +40,7 @@ namespace tmss.EntityFrameworkCore
 
         public virtual DbSet<MstTableAppService> MstTableAppServices { get; set; }
         public virtual DbSet<MstDishAppService> MstDishAppServices { get; set; }
+        public virtual DbSet<MstEmployeeAppService> MstEmployeeAppServices { get; set; }
 
         public tmssDbContext(DbContextOptions<tmssDbContext> options)
             : base(options)

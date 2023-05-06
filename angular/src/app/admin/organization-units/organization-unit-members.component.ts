@@ -2,13 +2,13 @@ import { Component, EventEmitter, Injector, OnInit, Output, ViewChild } from '@a
 import { AddMemberModalComponent } from '@app/admin/organization-units/add-member-modal.component';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { OrganizationUnitServiceProxy, OrganizationUnitUserListDto } from '@shared/service-proxies/service-proxies';
-import { LazyLoadEvent } from 'primeng/public_api';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 import { IBasicOrganizationUnitInfo } from './basic-organization-unit-info';
 import { IUserWithOrganizationUnit } from './user-with-organization-unit';
 import { IUsersWithOrganizationUnit } from './users-with-organization-unit';
 import { finalize } from 'rxjs/operators';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
     selector: 'organization-unit-members',

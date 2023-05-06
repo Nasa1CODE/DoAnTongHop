@@ -9,6 +9,7 @@ import { RegisterModel } from './register.model';
 import { finalize, catchError } from 'rxjs/operators';
 import { ReCaptchaV3Service } from 'ngx-captcha';
 
+
 @Component({
     templateUrl: './register.component.html',
     animations: [accountModuleAnimation()]

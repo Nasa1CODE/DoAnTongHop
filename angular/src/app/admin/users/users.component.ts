@@ -5,7 +5,6 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { EntityDtoOfInt64, UserListDto, UserServiceProxy, PermissionServiceProxy, FlatPermissionDto } from '@shared/service-proxies/service-proxies';
 import { FileDownloadService } from '@shared/utils/file-download.service';
-import { LazyLoadEvent } from 'primeng/public_api';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 import { CreateOrEditUserModalComponent } from './create-or-edit-user-modal.component';
@@ -16,6 +15,7 @@ import { FileUpload } from 'primeng/fileupload';
 import { finalize } from 'rxjs/operators';
 import { PermissionTreeModalComponent } from '../shared/permission-tree-modal.component';
 import { ManageEntityDynamicParameterValuesModalComponent  } from '@app/admin/dynamic-entity-parameters/entity-dynamic-parameter/entity-dynamic-parameter-value/manage-entity-dynamic-parameter-values-modal.component';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
     templateUrl: './users.component.html',

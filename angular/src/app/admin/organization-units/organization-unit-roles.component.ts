@@ -2,13 +2,13 @@ import { ChangeDetectorRef, Component, EventEmitter, Injector, OnInit, Output, V
 import { AddRoleModalComponent } from '@app/admin/organization-units/add-role-modal.component';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { OrganizationUnitServiceProxy, OrganizationUnitRoleListDto } from '@shared/service-proxies/service-proxies';
-import { LazyLoadEvent } from 'primeng/public_api';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 import { IBasicOrganizationUnitInfo } from './basic-organization-unit-info';
 import { IRoleWithOrganizationUnit } from './role-with-organization-unit';
 import { IRolesWithOrganizationUnit } from './roles-with-organization-unit';
 import { finalize } from 'rxjs/operators';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
     selector: 'organization-unit-roles',

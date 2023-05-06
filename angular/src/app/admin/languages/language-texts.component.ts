@@ -4,11 +4,11 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { LanguageServiceProxy } from '@shared/service-proxies/service-proxies';
 import * as _ from 'lodash';
-import { LazyLoadEvent } from 'primeng/public_api';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 import { EditTextModalComponent } from './edit-text-modal.component';
 import { finalize } from 'rxjs/operators';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
     templateUrl: './language-texts.component.html',

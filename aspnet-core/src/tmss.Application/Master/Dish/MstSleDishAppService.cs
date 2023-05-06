@@ -32,7 +32,7 @@ namespace tmss.Master.Dish
         //CREATE
         private async Task Create(CreateOrEditMstDishDto input)
         {
-            var mainObj = ObjectMapper.Map<MstTableAppService>(input);
+            var mainObj = ObjectMapper.Map<MstDishAppService>(input);
 
             await CurrentUnitOfWork.GetDbContext<tmssDbContext>().AddAsync(mainObj);
         }
