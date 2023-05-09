@@ -4,7 +4,7 @@
             <div class="ui-g-12">
                 <div class="ui-g-12">
                     <h6 class="card-header">
-                         {{ l(' Information Table ') }}
+                         {{ l(' InformationFood ') }}
                     </h6>
                 </div>
                 <div class="prod-cont">
@@ -12,8 +12,13 @@
                         <div class="form-group m-form__group align-items-center">
                             <div class="input-group">
                                 <div class='input-search'>
-									<input  name='tableNameFilter' [(ngModel)]="tableNameFilter"
-									class='form-control' [placeholder]="l('tableNameFilter')"
+									<input  name='nameVn'
+									class='form-control' [placeholder]="l('DishNameFilter')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input  name='nameVn'
+									class='form-control' [placeholder]="l('PriceFilter')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class="btn-search">
@@ -32,36 +37,31 @@
                         </div>
                     </div>
                     <div class="ui-g-12 ui-md-12">
-                        
- <!-- <ag-grid-angular
- style="width: 500px; height: 350px;"
- class="ag-theme-alpine"
- [rowData]="rowData"
- [columnDefs]="columnDefs"
- [defaultColDef] = "defaultColDef"
- [modules]="modules"
- >
-</ag-grid-angular> -->
                         <form autocomplete="on">
                         <div class="panel panel-default pt-1">
-                                <p-table [value]="rowData" [tableStyle]="{ 'min-width': '30rem' }"  [paginator]="true" [rows]="7" selectionMode="single" 
-                                [(selection)]="selectedRow"     dataKey="tableName"  (onRowSelect)="onRowSelect($event)" 
-                                [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                            <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }" dataKey="id" [paginator]="true" [rows]="7" 
+                            selectionMode="multiple" (selection)="onChangeRowSelection($event)"
+                                [showCurrentPageReport]="true"currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >
-                                    <tr>
-                                        <th>TableName</th>
-                                        <th>TableType</th>
-                                        <th>StatusTable</th>
-                                        <th>AmountPeople</th>
+                                    <tr [pSelectableRow]="rowdata">
+                                        <th>DishName</th>
+                                        <th>Price</th>
+                                        <th>UnitDish</th>
+                                        <th>DishType</th>
+                                        <th>ImageDish</th>
+                                        <th>StatusDish</th>
+
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-rowData    >
-                                    <tr [pSelectableRow]="rowData">
-                                        <td>{{rowData.tableName}}</td>
-                                        <td>{{ rowData.tableType }}</td>
-                                        <td>{{ rowData.statusTable }}</td>
-                                        <td>{{ rowData.amountPeople }}</td>
+                                <ng-template pTemplate="body" let-rowData   [pSelectableRowIndex]="rowIndex" >
+                                    <tr [pSelectableRow]="rowdata" [pSelectableRowIndex]="rowIndex">
+                                        <td>{{rowData.dishName}}</td>
+                                        <td>{{ rowData.price }}</td>
+                                        <td>{{ rowData.unitDish }}</td>
+                                        <td>{{ rowData.dishType }}</td>
+                                        <td>{{ rowData.imageDish }}</td>
+                                        <td>{{ rowData.statusDish }}</td>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="paginatorleft">
@@ -71,7 +71,6 @@
                                     <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
                                 </ng-template>
                                 </p-table>
-
                         </div>
                         </form>
                         <hr>

@@ -53,6 +53,11 @@ import { ZeroTemplateHttpConfigurationService } from './zero-template-http-confi
         ApiServiceProxies.DynamicParameterValueServiceProxy,
         ApiServiceProxies.EntityDynamicParameterValueServiceProxy,
         ApiServiceProxies.MstSleTableServiceProxy,
+        ApiServiceProxies.MstSleEmployeeServiceProxy,
+        ApiServiceProxies.MstSleDishServiceProxy,
+
+
+
         { provide: RefreshTokenService, useClass: ZeroRefreshTokenService },
         { provide: AbpHttpConfigurationService, useClass: ZeroTemplateHttpConfigurationService },
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }

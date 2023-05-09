@@ -38,6 +38,9 @@ NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
     declarations: [
         DashboardComponent
     ],
+    exports: [
+        AppCommonModule
+    ],
     providers: [
         { provide: BsDatepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDatepickerConfig },
         { provide: BsDaterangepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDaterangepickerConfig },

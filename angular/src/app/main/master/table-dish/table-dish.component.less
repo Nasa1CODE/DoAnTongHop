@@ -14,6 +14,123 @@
         color: blue;
         background-color: #04365e !important;
     }
+    
+// @import "../../../../../node_modules/@ag-grid-enterprise/all-modules/dist/styles/ag-grid.css";
+// @import "../../../../../node_modules/@ag-grid-enterprise/all-modules/dist/styles/ag-theme-alpine.css";
+
+.ag-theme-alpine {
+    font-family: 'Roboto' !important;
+    font-weight: 450;
+    color: #000;
+}
+
+
+.ag-theme-alpine .ag-header {
+    height: 20px;
+    min-height: 20px;
+}
+
+.ag-theme-alpine .ag-row {
+    height: 20px;
+    min-height: 20px;
+    color: #000;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell {
+    height: 20px;
+    //line-height: unset;
+    border-right: 1px solid #78787826;
+}
+
+.ag-theme-alpine .ag-header-row {
+    height: 20px;
+}
+
+.ag-theme-alpine .ag-row-odd {
+    background-color: #e7f6ff;
+}
+
+.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+    background-color: #dee9fc !important;
+    font-weight: 600;
+    border-bottom: 2px solid #ebedf2;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell{
+    display: flex;
+    align-items: center;
+}
+
+.ag-theme-alpine .ag-cell-wrapper > *:not(.ag-cell-value):not(.ag-group-value) {
+    height: 20px;
+}
+
+.ag-row-group {
+    line-height: 20px;
+}
+
+.ag-header-cell.ag-focus-managed.ag-header-cell-sortable {
+    padding-left: 10px;
+}
+
+.ag-theme-alpine .ag-ltr .ag-group-contracted, .ag-theme-alpine .ag-ltr .ag-group-expanded, .ag-theme-alpine .ag-ltr .ag-row-drag, .ag-theme-alpine .ag-ltr .ag-selection-checkbox {
+    margin-right: unset;
+}
+
+.ag-header-group-cell-label, .ag-header-cell-label {
+    justify-content: center;
+}
+
+.ag-theme-alpine .ag-header-cell {
+    text-align: center !important;
+}
+
+.ag-row-selected {
+    background-color: #008eff42 !important;
+}
+
+.ag-cell, .ag-header-cell {
+    font-size: 0.9rem !important;
+}
+
+.ag-cell-focus {
+    border: 1px solid #2196f3;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell.ag-cell-range-selected {
+    border-right: 1px solid #2196f3;
+    border-bottom: 1px solid #2196f3;
+}
+
+.ag-cell.ag-cell-auto-height.cell-clickable.ag-cell-inline-editing {
+    padding: 0 !important;
+}
+
+
+.ag-header-cell.ag-focus-managed:not(.ag-header-cell-sortable) {
+    padding: 0px 2px 0px 2px !important;
+}
+
+.ag-theme-alpine .ag-cell {
+    padding: 1px 10px 1px 10px;
+}
+
+.grid-wrap-text > .ag-root-wrapper > .ag-root-wrapper-body >.ag-root > .ag-body-viewport > .ag-center-cols-clipper > .ag-center-cols-viewport > .ag-center-cols-container > .ag-row{
+    align-items: stretch !important;
+    flex-flow: row wrap;
+    height: auto ;
+    flex-wrap: wrap;
+}
+.grid-wrap-text > .ag-root-wrapper > .ag-root-wrapper-body >.ag-root > .ag-body-viewport > .ag-center-cols-clipper > .ag-center-cols-viewport > .ag-center-cols-container > .ag-row > .ag-cell{
+    height:inherit ;
+    //align-items: stretch !important;
+    min-height: 20px;
+    white-space: pre-wrap !important;
+    flex-grow: 1 !important;
+    word-break: keep-all; /*this stops the word breaking*/
+    line-height: normal;
+}
+
 }
 p-table {
     tr{
@@ -30,3 +147,41 @@ p-table {
         }
     }
 }
+
+
+// ::ng-deep .grid-wrap-text > .ag-root-wrapper > .ag-root-wrapper-body >.ag-root > .ag-body-viewport > .ag-center-cols-clipper > .ag-center-cols-viewport > .ag-center-cols-container > .ag-row{
+//     align-items: stretch !important;
+//     flex-flow: row wrap;
+//     height: auto !important;
+//     flex-wrap: wrap;
+// }
+// ::ng-deep .grid-wrap-text > .ag-root-wrapper > .ag-root-wrapper-body >.ag-root > .ag-body-viewport > .ag-center-cols-clipper > .ag-center-cols-viewport > .ag-center-cols-container > .ag-row > .ag-cell{
+//     height:inherit !important;
+//     //align-items: stretch !important;
+//     min-height: 20px;
+//     white-space: pre-wrap !important;
+//     flex-grow: 1 !important;
+//     word-break: keep-all; /*this stops the word breaking*/
+//     line-height: normal;
+// }
+
+
+
+
+
+//  .ag-theme-alpine .ag-row {
+//         height:auto;
+//         white-space: normal !important;
+//         display: flex;
+//         min-height: 20px;
+//         display: flex;
+//         flex-flow: row wrap;
+//     }
+
+//      .ag-theme-alpine .ag-cell {
+//         height: auto;
+//         flex-flow: column;
+//         min-height: 20px;
+//         white-space: normal !important;
+//         line-height: unset;
+//     }

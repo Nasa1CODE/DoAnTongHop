@@ -47,12 +47,15 @@ import { ComboboxInputTypeComponent } from './input-types/combobox-input-type/co
 import { CheckboxInputTypeComponent } from './input-types/checkbox-input-type/checkbox-input-type.component';
 import { MultipleSelectComboboxInputTypeComponent } from './input-types/multiple-select-combobox-input-type/multiple-select-combobox-input-type.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { AgGridModule } from '@ag-grid-community/angular';
+
 
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        AgGridModule.withComponents([ ]),
         ReactiveFormsModule,
         ModalModule.forRoot(),
         UtilsModule,
@@ -107,7 +110,9 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
         DateRangePickerInitialValueSetterDirective,
         DatePickerInitialValueSetterDirective,
         CustomizableDashboardComponent,
-        NgxChartsModule
+        NgxChartsModule,
+        AgGridModule,
+        TableModule
     ],
     providers: [
         DateTimeService,

@@ -1,21 +1,17 @@
-import { ColDef, IsColumnFunc, Module } from "@ag-grid-enterprise/all-modules";
-import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
+import { Component, Injector, OnInit, ViewChild } from "@angular/core";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { PaginationParamsModel } from "@shared/common/models/models.model";
-import { MstSleTableServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
+import { MstSleEmployeeServiceProxy, MstSleTableServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
 import { ceil } from "lodash";
 import { Paginator } from "primeng/paginator";
 import { finalize } from "rxjs/operators";
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { appModuleAnimation } from "@shared/animations/routerTransition";
+
 
 @Component({
-    templateUrl: './table-dish.component.html',
-    encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./table-dish.component.less'],
-    animations: [appModuleAnimation()]
+    templateUrl: './employee.component.html',
+    styleUrls: ['./employee.component.less'],
 })
-export class TableDishComponent extends AppComponentBase implements OnInit {
+export class EmployeeComponent extends AppComponentBase implements OnInit {
   
     @ViewChild('paginator', { static: true }) paginator: Paginator;
     paginationParams: PaginationParamsModel = {
@@ -37,21 +33,14 @@ export class TableDishComponent extends AppComponentBase implements OnInit {
     tableNameFilter;
     tableTypeFilter;
     selecteId: MstTableDto[] = [];
+    employeeNameFilter;
+    positionFilter;
+    phoneNumberFilter;
+    adrressEmployeeFilter;
+    emailEmployeeFilter;
 
-    modules: Module[] = [ClientSideRowModelModule];
 
-    columnDefs1: ColDef[] = [
-        { field: 'make' },
-        { field: 'model' },
-        { field: 'price' }
-    ];
 
-    rowData1 = [
-        { make: 'Toyota', model: 'Celica', price: 35000 },
-        { make: 'Ford', model: 'Mondeo', price: 32000 },
-        { make: 'Porsche', model: 'Boxster', price: 72000 }
-    ];
-    
     defaultColDef = {
         resizable: true,
         sortable: true,
@@ -68,7 +57,7 @@ export class TableDishComponent extends AppComponentBase implements OnInit {
 
     constructor(
         injector: Injector,
-        private _service: MstSleTableServiceProxy,
+        private _service: MstSleEmployeeServiceProxy,
     ) {
         super(injector);
        
@@ -82,8 +71,11 @@ export class TableDishComponent extends AppComponentBase implements OnInit {
     searchDatas(): void {
         // this.paginator.changePage(this.paginator.getPage());
         this._service.getAll(
-			this.tableNameFilter,
-			this.tableTypeFilter,
+			this.employeeNameFilter,
+			this.positionFilter,
+            this.phoneNumberFilter,
+            this.adrressEmployeeFilter,
+            this.emailEmployeeFilter,
 			'',
             this.paginationParams.skipCount,
             this.paginationParams.pageSize
@@ -103,8 +95,11 @@ export class TableDishComponent extends AppComponentBase implements OnInit {
 
     getDatas() {
         return this._service.getAll(
-            this.tableNameFilter,
-			this.tableTypeFilter,
+            this.employeeNameFilter,
+			this.positionFilter,
+            this.phoneNumberFilter,
+            this.adrressEmployeeFilter,
+            this.emailEmployeeFilter,
 			'',
             this.paginationParams.skipCount,
             this.paginationParams.pageSize
@@ -112,13 +107,14 @@ export class TableDishComponent extends AppComponentBase implements OnInit {
         );
     }
 
-    onRowSelect(event) {
-        const selectedRow = event.data;
-        this.selectedRow = selectedRow;
+    onChangeRowSelection(params: { api: { getSelectedRows: () => MstTableDto[] } }) {
+        this.saveSelectedRow = params.api.getSelectedRows()[0] ?? new MstTableDto();
+        this.selectedRow = Object.assign({}, this.saveSelectedRow);
+       
     }
 
-
    
+
     deleteRow(system: MstTableDto): void {
         console.log(system.id);
         this.message.confirm(this.l('AreYouSureToDelete'), 'Delete Row', (isConfirmed) => {

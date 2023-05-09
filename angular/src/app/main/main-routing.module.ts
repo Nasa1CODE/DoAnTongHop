@@ -15,6 +15,16 @@ import { RouterModule } from '@angular/router';
                         loadChildren: () => import('./master/table-dish/table-dish.module').then(m => m.TableDishModule),
                         
                     },
+                    {
+                        path: 'master/employee',
+                        loadChildren: () => import('./master/employee/employee.module').then(m => m.EmployeeModule),
+                        
+                    },
+                    {
+                        path: 'master/dish',
+                        loadChildren: () => import('./master/dish/dish.module').then(m => m.DishModule),
+                        
+                    },
                     { path: '**', redirectTo: 'dashboard' },
                     
                 ],

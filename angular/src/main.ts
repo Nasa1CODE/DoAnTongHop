@@ -7,6 +7,15 @@ import { hmrBootstrap } from './hmr';
 import './polyfills.ts';
 import { RootModule } from './root.module';
 
+// set ag-grid-enterprise license
+ 
+import "@ag-grid-enterprise/all-modules";
+import { LicenseManager } from '@ag-grid-enterprise/all-modules';
+
+LicenseManager.setLicenseKey(
+    "[v2]-_TMV_TMSS_18_May_2033_MjAwMDAwMDAwMDAwMA==70837a4d6bc7393fe5e607db4c051b42"
+);
+
 if (environment.production) {
     enableProdMode();
 }

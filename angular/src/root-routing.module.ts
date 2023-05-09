@@ -10,8 +10,20 @@ const routes: Routes = [
         data: { preload: true }
     },
     {
+        path: 'app/main/master/employee',
+        loadChildren: () => import('@app/main/master/employee/employee.module').then(m => m.EmployeeModule),
+        data: { preload: true }
+       
+    },
+    {
         path: 'app/main/master/table-dish',
         loadChildren: () => import('@app/main/master/table-dish/table-dish.module').then(m => m.TableDishModule),
+        data: { preload: true }
+       
+    },
+    {
+        path: 'app/main/master/dish',
+        loadChildren: () => import('@app/main/master/dish/dish.module').then(m => m.DishModule),
         data: { preload: true }
        
     },
