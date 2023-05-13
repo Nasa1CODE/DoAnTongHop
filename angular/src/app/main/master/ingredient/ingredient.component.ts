@@ -2,7 +2,7 @@ import { ColDef, IsColumnFunc, Module } from "@ag-grid-enterprise/all-modules";
 import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { PaginationParamsModel } from "@shared/common/models/models.model";
-import { MstSleTableServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
+import { MstSleIngredientcServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
 import { ceil } from "lodash";
 import { Paginator } from "primeng/paginator";
 import { finalize } from "rxjs/operators";
@@ -10,12 +10,12 @@ import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-mod
 import { appModuleAnimation } from "@shared/animations/routerTransition";
 
 @Component({
-    templateUrl: './table-dish.component.html',
+    templateUrl: './ingredient.component.html',
     encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./table-dish.component.less'],
+    styleUrls: ['./ingredient.component.less'],
     animations: [appModuleAnimation()]
 })
-export class TableDishComponent extends AppComponentBase implements OnInit {
+export class IngredientComponent extends AppComponentBase implements OnInit {
   
     @ViewChild('paginator', { static: true }) paginator: Paginator;
     paginationParams: PaginationParamsModel = {
@@ -34,56 +34,29 @@ export class TableDishComponent extends AppComponentBase implements OnInit {
     isLoading: boolean = false;
     rowData: any[] = [];
     filter: string = '';
-    tableNameFilter: string = '';
-    tableTypeFilter: string = '';
+    ingredientNameFilter: string = '';
+    unitIngredientFilter: string = '';
     selecteId: MstTableDto[] = [];
 
     modules: Module[] = [ClientSideRowModelModule];
 
-    columnDefs1: ColDef[] = [
-        { field: 'make' },
-        { field: 'model' },
-        { field: 'price' }
-    ];
-
-    rowData1 = [
-        { make: 'Toyota', model: 'Celica', price: 35000 },
-        { make: 'Ford', model: 'Mondeo', price: 32000 },
-        { make: 'Porsche', model: 'Boxster', price: 72000 }
-    ];
-    
-    defaultColDef = {
-        resizable: true,
-        sortable: true,
-        floatingFilterComponentParams: { suppressFilterButton: true },
-        filter: true,
-        floatingFilter: true,
-        suppressHorizontalScroll: true,
-        textFormatter: function (r: any) {
-            if (r == null) return null;
-            return r.toLowerCase();
-        },
-        tooltip: (params) => params.value,
-    };
 
     constructor(
         injector: Injector,
-        private _service: MstSleTableServiceProxy,
+        private _service: MstSleIngredientcServiceProxy,
     ) {
         super(injector);
        
     }
 
     ngOnInit(): void {
-        this.paginationParams = { pageNum: 1, pageSize: 20, totalCount: 0 };
         this.searchDatas();
     }
 
     searchDatas(): void {
-        // this.paginator.changePage(this.paginator.getPage());
         this._service.getAll(
-			this.tableNameFilter,
-			this.tableTypeFilter,
+			this.ingredientNameFilter,
+			this.unitIngredientFilter,
 			'',
             this.paginationParams.skipCount,
             this.paginationParams.pageSize
@@ -96,16 +69,16 @@ export class TableDishComponent extends AppComponentBase implements OnInit {
     }
 
     clearTextSearch() { 
-        this.tableNameFilter = '';
-        this.tableTypeFilter = '';
+        this.ingredientNameFilter = '';
+        this.unitIngredientFilter = '';
         this.searchDatas();
     }
 
 
     getDatas() {
         return this._service.getAll(
-            this.tableNameFilter,
-			this.tableTypeFilter,
+            this.ingredientNameFilter,
+			this.unitIngredientFilter,
 			'',
             this.paginationParams.skipCount,
             this.paginationParams.pageSize

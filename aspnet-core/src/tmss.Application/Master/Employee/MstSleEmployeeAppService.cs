@@ -25,16 +25,21 @@ namespace tmss.Master.Employee
 
         public async Task CreateOrEdit(CreateOrEditMstEmployeeDto input)
         {
-            if (input.Id == null) await Create(input);
-            else await Update(input);
+            if (input.Id == null)
+            { 
+                await Create(input); 
+            }
+            else {
+                await Update(input);
+            }
         }
 
         //CREATE
         private async Task Create(CreateOrEditMstEmployeeDto input)
         {
-            var mainObj = ObjectMapper.Map<MstEmployeeAppService>(input);
+            var newRecord = ObjectMapper.Map<MstEmployeeAppService>(input);
+            await _mstEmployeeAppService.InsertAsync(newRecord);
 
-            await CurrentUnitOfWork.GetDbContext<tmssDbContext>().AddAsync(mainObj);
         }
 
         // EDIT
@@ -66,7 +71,7 @@ namespace tmss.Master.Employee
             var pageAndFiltered = filtered.OrderBy(s => s.Id);
 
 
-            var system = from o in pageAndFiltered
+            var system = from o in filtered
                          select new MstEmployeeDto
                          {
                              Id = o.Id,

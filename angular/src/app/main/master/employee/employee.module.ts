@@ -1,20 +1,24 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
-import { TableModule } from "primeng/table";
-import { EmployeeComponent } from "./employee.component";
-import { EmployeeRoutingModule } from "./employee-routing-module";
 
+import { EmployeeRoutingModule } from "./employee-routing-module";
+import { CreateOrEditEmployeeComponent } from "./create-or-edit-employee.component";
+import { MainModule } from "@app/main/main.module";
+import { AppCommonModule } from "@app/shared/common/app-common.module";
+import { NgModule } from "@angular/core";
+import { EmployeeComponent } from "./employee.component";
 
 @NgModule({
     declarations: [
-        EmployeeComponent, 
+        EmployeeComponent,
+        CreateOrEditEmployeeComponent
     ],
     imports: [
-         EmployeeRoutingModule,
-            TableModule
-        ],
-    schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
+        AppCommonModule,
+        EmployeeRoutingModule,
+        MainModule,
+    ],
+
 })
 
 export class EmployeeModule {
-    
+
 }

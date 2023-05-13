@@ -23,6 +23,7 @@ export class AppNavigationService {
             new AppMenuItem('Quản lý món ăn', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/main/master/dish'),
             new AppMenuItem('Quản lý đồ uống', 'Pages.DemoUiComponents', 'flaticon-shapes', ''),
             new AppMenuItem('Quản lý bàn ăn', '', 'flaticon-shapes', '/app/main/master/table-dish'),
+            new AppMenuItem('QLNN', '', 'flaticon-shapes', '/app/main/master/ingredient'),
             new AppMenuItem('Quản lý nhà cung cấp', 'Pages.DemoUiComponents', 'flaticon-shapes', ''),
             new AppMenuItem('Quản lý nhân viên', '','flaticon-shapes', '/app/main/master/employee'),
             new AppMenuItem('Quản lý thống kê', 'Pages.DemoUiComponents', 'flaticon-shapes', ''),

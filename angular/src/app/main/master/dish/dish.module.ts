@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { TableModule } from "primeng/table";
 import { DishComponent } from "./dish.component";
 import { DishRoutingModule } from "./dish-routing-module";
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { DishRoutingModule } from "./dish-routing-module";
     ],
     imports: [
          DishRoutingModule,
-            TableModule
+            TableModule,
+            FormsModule
         ],
     schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
 })

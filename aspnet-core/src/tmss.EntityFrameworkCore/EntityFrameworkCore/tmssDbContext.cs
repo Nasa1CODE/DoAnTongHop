@@ -2,6 +2,8 @@
 using Abp.Organizations;
 using Abp.Zero.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 using tmss.Authorization.Delegation;
 using tmss.Authorization.Roles;
 using tmss.Authorization.Users;
@@ -34,6 +36,11 @@ namespace tmss.EntityFrameworkCore
 
         public virtual DbSet<PersistedGrantEntity> PersistedGrants { get; set; }
 
+        public Task AddAsync(object mainObj)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual DbSet<SubscriptionPaymentExtensionData> SubscriptionPaymentExtensionDatas { get; set; }
 
         public virtual DbSet<UserDelegation> UserDelegations { get; set; }
@@ -41,6 +48,7 @@ namespace tmss.EntityFrameworkCore
         public virtual DbSet<MstTableAppService> MstTableAppServices { get; set; }
         public virtual DbSet<MstDishAppService> MstDishAppServices { get; set; }
         public virtual DbSet<MstEmployeeAppService> MstEmployeeAppServices { get; set; }
+        public virtual DbSet<MstIngredientcAppService> MstIngredientcAppServices { get; set; }
 
         public tmssDbContext(DbContextOptions<tmssDbContext> options)
             : base(options)

@@ -16,11 +16,35 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BsDatepickerConfig, BsDaterangepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';
+import { AppBsModalModule } from '@shared/common/appBsModal/app-bs-modal.module';
+import { CreateOrEditEmployeeComponent } from './master/employee/create-or-edit-employee.component';
+import { TableModule } from 'primeng';
 
 NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
 
 @NgModule({
     imports: [
+        CommonModule,
+        FormsModule,
+        ModalModule.forRoot(),
+        TabsModule,
+        TooltipModule,
+        AppCommonModule,
+        UtilsModule,
+        MainRoutingModule,
+        CountoModule,
+        NgxChartsModule,
+        BsDatepickerModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        PopoverModule.forRoot(),
+        AppBsModalModule,
+        TableModule
+    ],
+    declarations: [
+        DashboardComponent,
+        
+    ],
+    exports: [
         CommonModule,
         FormsModule,
         ModalModule,
@@ -31,15 +55,10 @@ NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
         MainRoutingModule,
         CountoModule,
         NgxChartsModule,
-        BsDatepickerModule.forRoot(),
-        BsDropdownModule.forRoot(),
-        PopoverModule.forRoot()
-    ],
-    declarations: [
-        DashboardComponent
-    ],
-    exports: [
-        AppCommonModule
+        BsDatepickerModule,
+        BsDropdownModule,
+        PopoverModule,
+        AppBsModalModule
     ],
     providers: [
         { provide: BsDatepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDatepickerConfig },

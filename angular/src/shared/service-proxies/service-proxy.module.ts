@@ -55,6 +55,8 @@ import { ZeroTemplateHttpConfigurationService } from './zero-template-http-confi
         ApiServiceProxies.MstSleTableServiceProxy,
         ApiServiceProxies.MstSleEmployeeServiceProxy,
         ApiServiceProxies.MstSleDishServiceProxy,
+        ApiServiceProxies.MstSleIngredientcServiceProxy,
+        
 
 
 

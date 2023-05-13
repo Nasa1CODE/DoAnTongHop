@@ -4,7 +4,7 @@
             <div class="ui-g-12">
                 <div class="ui-g-12">
                     <h6 class="card-header">
-                         {{ l(' InformationFood ') }}
+                         {{ l(' Information Table ') }}
                     </h6>
                 </div>
                 <div class="prod-cont">
@@ -12,15 +12,13 @@
                         <div class="form-group m-form__group align-items-center">
                             <div class="input-group">
                                 <div class='input-search'>
-									<input  name='nameVn'
-                                    [(ngModel)]="dishNameFilter"
-									class='form-control' [placeholder]="l('DishNameFilter')"
+									<input  name='ingredientNameFilter' [(ngModel)]="ingredientNameFilter"
+									class='form-control' [placeholder]="l('ingredientNameFilter')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class='input-search'>
-									<input  name='nameVn'
-                                    [(ngModel)]="priceFilter"
-									class='form-control' [placeholder]="l('PriceFilter')"
+									<input  name='unitIngredientFilter' [(ngModel)]="unitIngredientFilter"
+									class='form-control' [placeholder]="l('unitIngredientFilter')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class="btn-search">
@@ -39,32 +37,25 @@
                         </div>
                     </div>
                     <div class="ui-g-12 ui-md-12">
+                        
                         <form autocomplete="on">
                         <div class="panel panel-default pt-1">
-                            <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }" dataKey="id" [paginator]="true" [rows]="7" 
-                            selectionMode="single"  (selection)="onChangeRowSelection($event)"
-                                [(selection)]="selectedRow"     dataKey="id"  (onRowSelect)="onRowSelect($event)" 
-                                [showCurrentPageReport]="true"currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                <p-table [value]="rowData" [tableStyle]="{ 'min-width': '30rem' }"  [paginator]="true" [rows]="7" selectionMode="single" 
+                                [(selection)]="selectedRow"     dataKey="IngredientName"  (onRowSelect)="onRowSelect($event)" 
+                                [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >
-                                    <tr >
-                                        <th>DishName</th>
-                                        <th>Price</th>
-                                        <th>UnitDish</th>
-                                        <th>DishType</th>
-                                        <th>ImageDish</th>
-                                        <th>StatusDish</th>
-
+                                    <tr>
+                                        <th>IngredientName</th>
+                                        <th>UnitIngredient</th>
+                                        <th>QuantityIngredient</th>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-rowData >
-                                    <tr [pSelectableRow]="rowdata" >
-                                        <td>{{rowData.dishName}}</td>
-                                        <td>{{ rowData.price }}</td>
-                                        <td>{{ rowData.unitDish }}</td>
-                                        <td>{{ rowData.dishType }}</td>
-                                        <td>{{ rowData.imageDish }}</td>
-                                        <td>{{ rowData.statusDish }}</td>
+                                <ng-template pTemplate="body" let-rowData    >
+                                    <tr [pSelectableRow]="rowData">
+                                        <td>{{rowData.ingredientName}}</td>
+                                        <td>{{ rowData.unitIngredient }}</td>
+                                        <td>{{ rowData.quantityIngredient }}</td>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="paginatorleft">
@@ -74,6 +65,7 @@
                                     <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
                                 </ng-template>
                                 </p-table>
+
                         </div>
                         </form>
                         <hr>
@@ -82,6 +74,7 @@
                                 <button class="btn btn-success font-weight-bold" id="exportToExcel" (click)="exportToExcel()">
                                     <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
                                 </button>
+
                             <button class="btn btn-info font-weight-bold" >
                                 <i class="fa fa-plus mr-1"></i>{{ l('Add') }}
                             </button>

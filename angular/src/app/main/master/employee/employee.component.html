@@ -1,4 +1,4 @@
-<div id="container" class="mt-2" >
+<div id="container" class="mt-2"  [busyIf]="isLoading">
     <div class="ui-g-12">
         <fieldset class="fieldset-border grid-parent">
             <div class="ui-g-12">
@@ -12,22 +12,25 @@
                         <div class="form-group m-form__group align-items-center">
                             <div class="input-group">
                                 <div class='input-search'>
-									<input  name='nameVn'
+									<input  
 									class='form-control' [placeholder]="l('EmployeeName')"
+                                    [(ngModel)]="employeeNameFilter"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class='input-search'>
-									<input  name='nameVn'
+									<input  
+                                    [(ngModel)]="positionFilter"
 									class='form-control' [placeholder]="l('Position')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class='input-search'>
-									<input  name='nameVn'
+									<input  
+                                    [(ngModel)]="phoneNumberFilter"
 									class='form-control' [placeholder]="l('PhoneNumber')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class='input-search'>
-									<input  name='nameVn'
+									<input   [(ngModel)]="adrressEmployeeFilter"
 									class='form-control' [placeholder]="l('AdrressEmployee')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
@@ -49,11 +52,12 @@
                     <div class="ui-g-12 ui-md-12">
                         <form autocomplete="on">
                         <div class="panel panel-default pt-1">
-                                <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }" dataKey="id" [paginator]="true" [rows]="7" selectionMode="multiple" (selection)="onChangeRowSelection($event)"
+                                <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }"  [paginator]="true" [rows]="7" selectionMode="single" 
+                                [(selection)]="selectedRow"     dataKey="phoneNumber"  (onRowSelect)="onRowSelect($event)" 
                                 [showCurrentPageReport]="true"currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >
-                                    <tr [pSelectableRow]="rowdata">
+                                    <tr >
                                         <th>EmployeeName</th>
                                         <th>Position</th>
                                         <th>PhoneNumber</th>
@@ -62,8 +66,8 @@
 
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-rowData   [pSelectableRowIndex]="rowIndex" >
-                                    <tr [pSelectableRow]="rowdata" [pSelectableRowIndex]="rowIndex">
+                                <ng-template pTemplate="body" let-rowData   >
+                                    <tr [pSelectableRow]="rowData">
                                         <td>{{rowData.employeeName}}</td>
                                         <td>{{ rowData.position }}</td>
                                         <td>{{ rowData.phoneNumber }}</td>
@@ -85,15 +89,14 @@
                         <hr>
                         <div class="text-right">
                         	<div>
-                                <button class="btn btn-success font-weight-bold" id="exportToExcel" (click)="exportToExcel()">
-                                    <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
-                                </button>
-
-                            <button class="btn btn-info font-weight-bold" >
+                            <button class="btn btn-success font-weight-bold" id="exportToExcel" (click)="exportToExcel()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+                            <button class="btn btn-info font-weight-bold" (click)="create()" >
                                 <i class="fa fa-plus mr-1"></i>{{ l('Add') }}
                             </button>
 
-                            <button class="btn btn-warning font-weight-bold" >
+                            <button class="btn btn-warning font-weight-bold" (click)="editEmployee()" >
                                 <i class="far fa-edit mr-1"></i>{{'Edit'}}
                             </button>
 
@@ -110,4 +113,6 @@
     </div>
 </div>
 
+
+<create-or-edit-employee #createOrEditMstEmployee ></create-or-edit-employee>
 

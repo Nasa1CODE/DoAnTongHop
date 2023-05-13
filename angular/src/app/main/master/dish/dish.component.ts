@@ -33,8 +33,8 @@ export class DishComponent extends AppComponentBase implements OnInit {
     tableNameFilter;
     tableTypeFilter;
     selecteId: MstTableDto[] = [];
-    dishNameFilter;
-    priceFilter;
+    dishNameFilter : string = '';
+    priceFilter: string = '';
 
 
 
@@ -82,10 +82,16 @@ export class DishComponent extends AppComponentBase implements OnInit {
     }
 
     clearTextSearch() { 
+    this.dishNameFilter = '';
+    this.priceFilter = '';
     
     this.searchDatas();
     }
 
+    onRowSelect(event) {
+        const selectedRow = event.data;
+        this.selectedRow = selectedRow;
+    }
 
     getDatas() {
         return this._service.getAll(
@@ -111,7 +117,7 @@ export class DishComponent extends AppComponentBase implements OnInit {
         this.message.confirm(this.l('AreYouSureToDelete'), 'Delete Row', (isConfirmed) => {
             if (isConfirmed) {
                 this._service.delete(system.id).subscribe(() => {
-                    //this.callBackDataGrid(this.dataParams!);
+                    this.searchDatas();
                     this.notify.success(this.l('SuccessfullyDeleted'));
                     this.notify.info(this.l('SuccessfullyDeleted'));
                 });

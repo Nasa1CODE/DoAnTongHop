@@ -25,6 +25,11 @@ import { RouterModule } from '@angular/router';
                         loadChildren: () => import('./master/dish/dish.module').then(m => m.DishModule),
                         
                     },
+                    {
+                        path: 'master/ingredient',
+                        loadChildren: () => import('./master/ingredient/ingredient.module').then(m => m.IngredientModule),
+                        
+                    },
                     { path: '**', redirectTo: 'dashboard' },
                     
                 ],
