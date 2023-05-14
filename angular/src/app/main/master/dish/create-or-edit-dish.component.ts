@@ -1,34 +1,28 @@
 import { Component, EventEmitter, Injector, OnInit, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
-import { CreateOrEditMstEmployeeDto, MstSleEmployeeServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CreateOrEditMstDishDto, CreateOrEditMstEmployeeDto, MstSleDishServiceProxy, MstSleEmployeeServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs/operators';
-import { EmployeeComponent } from './employee.component';
+
 
 @Component({
-  selector: '/create-or-edit-employee',
-  templateUrl: './create-or-edit-employee.component.html',
-  styleUrls: ['./create-or-edit-employee.component.less']
+  selector: '/create-or-edit-dish',
+  templateUrl: './create-or-edit-dish.component.html',
+  styleUrls: ['./create-or-edit-dish.component.less']
 })
-export class CreateOrEditEmployeeComponent extends AppComponentBase {
+export class CreateOrEditDishComponent extends AppComponentBase {
   @ViewChild('createOrEditModal', { static: true }) modal: ModalDirective | undefined;
   @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
   active: boolean = false;
   saving: boolean = false;
-  rowdata: CreateOrEditMstEmployeeDto = new CreateOrEditMstEmployeeDto();
+  rowdata: CreateOrEditMstDishDto = new CreateOrEditMstDishDto();
   notify: any;
   listMajor: any[] = [];
 
-  listPosition = [
-		{ value: 0, label: 'Nhân viên' },
-		{ value: 1, label: 'Đầu bếp' },
-    { value: 2, label: 'Phục vụ' },
-	];
 
   constructor(
     injector: Injector,
-    private _mstSleEmployeeServiceProxy: MstSleEmployeeServiceProxy,
-    private _mstSleEmployee: EmployeeComponent
+    private _serviceProxy: MstSleDishServiceProxy,
 
   ) {
     super(injector)
@@ -38,8 +32,8 @@ export class CreateOrEditEmployeeComponent extends AppComponentBase {
 
   }
 
-  show(rowdata?: CreateOrEditMstEmployeeDto): void {
-    if (!rowdata) this.rowdata = new CreateOrEditMstEmployeeDto();
+  show(rowdata?: CreateOrEditMstDishDto): void {
+    if (!rowdata) this.rowdata = new CreateOrEditMstDishDto();
     else this.rowdata = rowdata;
 
     this.active = true;
@@ -48,12 +42,12 @@ export class CreateOrEditEmployeeComponent extends AppComponentBase {
 
   save(): void {
     this.saving = true;
-    this._mstSleEmployeeServiceProxy.createOrEdit(this.rowdata).
+    this._serviceProxy.createOrEdit(this.rowdata).
       pipe(
         finalize(() => {
           this.saving = false;
         })).subscribe(() => {
-          this._mstSleEmployee.searchDatas();
+         
           this.notify.info(this.l("SavedSuccessfully"));
           this.close();
           this.modalSave.emit(null);

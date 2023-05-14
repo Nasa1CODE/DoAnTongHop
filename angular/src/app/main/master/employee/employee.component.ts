@@ -104,10 +104,9 @@ export class EmployeeComponent extends AppComponentBase implements OnInit {
 
     deleteRow(system: CreateOrEditMstEmployeeDto): void {
         console.log(system.id);
-        this.message.confirm(this.l('AreYouSureToDelete'), 'Delete Row', (isConfirmed) => {
+        this.message.confirm(this.l('AreYouSure'), 'Delete', (isConfirmed) => {
             if (isConfirmed) {
                 this._service.delete(system.id).subscribe(() => {
-                    //this.callBackDataGrid(this.dataParams!);
                     this.searchDatas();
                     this.notify.success(this.l('SuccessfullyDeleted'));            
                     this.notify.info(this.l('SuccessfullyDeleted'));

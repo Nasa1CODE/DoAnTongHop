@@ -1,10 +1,11 @@
 import { Component, Injector, OnInit, ViewChild } from "@angular/core";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { PaginationParamsModel } from "@shared/common/models/models.model";
-import { MstSleDishServiceProxy, MstSleEmployeeServiceProxy, MstSleTableServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
+import { CreateOrEditMstDishDto, MstSleDishServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
 import { ceil } from "lodash";
 import { Paginator } from "primeng/paginator";
 import { finalize } from "rxjs/operators";
+import { CreateOrEditDishComponent } from "./create-or-edit-dish.component";
 
 
 @Component({
@@ -14,6 +15,7 @@ import { finalize } from "rxjs/operators";
 export class DishComponent extends AppComponentBase implements OnInit {
   
     @ViewChild('paginator', { static: true }) paginator: Paginator;
+    @ViewChild('createOrEditDish', { static: true }) createOrEditDish: CreateOrEditDishComponent;
     paginationParams: PaginationParamsModel = {
         pageNum: 1,
         pageSize: 500,
@@ -24,7 +26,7 @@ export class DishComponent extends AppComponentBase implements OnInit {
     };
 
     rowSelection:any;
-    selectedRow: MstTableDto = new MstTableDto();
+    selectedRow: CreateOrEditMstDishDto = new CreateOrEditMstDishDto();
     saveSelectedRow: MstTableDto = new MstTableDto();
     datas: MstTableDto = new MstTableDto();
     isLoading: boolean = false;
@@ -104,15 +106,10 @@ export class DishComponent extends AppComponentBase implements OnInit {
         );
     }
 
-    onChangeRowSelection(params: { api: { getSelectedRows: () => MstTableDto[] } }) {
-        this.saveSelectedRow = params.api.getSelectedRows()[0] ?? new MstTableDto();
-        this.selectedRow = Object.assign({}, this.saveSelectedRow);
-       
-    }
 
    
 
-    deleteRow(system: MstTableDto): void {
+    deleteRow(system: CreateOrEditMstDishDto): void {
         console.log(system.id);
         this.message.confirm(this.l('AreYouSureToDelete'), 'Delete Row', (isConfirmed) => {
             if (isConfirmed) {
@@ -127,4 +124,13 @@ export class DishComponent extends AppComponentBase implements OnInit {
     exportToExcel(): void {
       
     }
+
+    createDish(){
+        this.createOrEditDish.show(undefined);
+    }
+
+    editDish(){
+        this.createOrEditDish.show(this.selectedRow);
+    }
+   
 }

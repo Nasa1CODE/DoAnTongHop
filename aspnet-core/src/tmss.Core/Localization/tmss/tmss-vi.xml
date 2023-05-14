@@ -784,5 +784,14 @@
     <text name="Green">Màu lục</text>
     <text name="Pink">Màu hồng</text>
     <text name="Yellow">Màu vàng</text>
+    
+    <text name="EmployeeName">Tên nhân viên</text>
+	<text name="Position">Chức vụ</text>
+	<text name="AdrressEmployee">Địa chỉ</text>
+	<text name="EmailEmployee">Email</text>
+	<text name="EditEmployee">Sửa thông tin nhân viên</text>
+	<text name="CreateEmployee">Thêm mới thông tin nhân viên</text>
+    
+  
   </texts>
 </localizationDictionary>

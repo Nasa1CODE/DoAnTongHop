@@ -41,7 +41,7 @@
                         <form autocomplete="on">
                         <div class="panel panel-default pt-1">
                                 <p-table [value]="rowData" [tableStyle]="{ 'min-width': '30rem' }"  [paginator]="true" [rows]="7" selectionMode="single" 
-                                [(selection)]="selectedRow"     dataKey="IngredientName"  (onRowSelect)="onRowSelect($event)" 
+                               dataKey="IngredientName"  (onRowSelect)="onRowSelect($event)" 
                                 [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >

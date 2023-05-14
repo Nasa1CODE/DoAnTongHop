@@ -1,12 +1,15 @@
 <div id="container" class="mt-2"  [busyIf]="isLoading">
     <div class="ui-g-12">
-        <fieldset class="fieldset-border grid-parent">
+        <div class="card-header">
+            <div class="row">
+              <div class="col-6">
+                <h2 class="text-uppercase">DANH SÁCH NHÂN VIÊN</h2>
+              </div>
+            </div>
+          </div>
+        <!-- <fieldset class="fieldset-border grid-parent"> -->
             <div class="ui-g-12">
-                <div class="ui-g-12">
-                    <h6 class="card-header">
-                         {{ l(' InformationEmployee ') }}
-                    </h6>
-                </div>
+            
                 <div class="prod-cont">
                     <div class="ui-g-12">
                         <div class="form-group m-form__group align-items-center">
@@ -19,8 +22,8 @@
 								</div>
                                 <div class='input-search'>
 									<input  
-                                    [(ngModel)]="positionFilter"
 									class='form-control' [placeholder]="l('Position')"
+                                    [(ngModel)]="positionFilter"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class='input-search'>
@@ -58,16 +61,17 @@
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >
                                     <tr >
-                                        <th>EmployeeName</th>
-                                        <th>Position</th>
-                                        <th>PhoneNumber</th>
-                                        <th>AdrressEmployee</th>
-                                        <th>EmailEmployee</th>
-
+                                        <th class="small-index">#</th>
+                                        <th>{{ l("EmployeeName") }}</th>
+                                        <th>{{ l("Position") }}</th>
+                                        <th>{{ l("PhoneNumber") }}</th>
+                                        <th>{{ l("AdrressEmployee") }}</th>
+                                        <th>{{ l("EmailEmployee") }}</th>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-rowData   >
+                                <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                                     <tr [pSelectableRow]="rowData">
+                                        <td class="small-index">{{rowIndex + 1}}</td>
                                         <td>{{rowData.employeeName}}</td>
                                         <td>{{ rowData.position }}</td>
                                         <td>{{ rowData.phoneNumber }}</td>
@@ -109,7 +113,7 @@
                     </div>
                 </div>
             </div>
-        </fieldset>
+        <!-- </fieldset> -->
     </div>
 </div>
 

@@ -41,9 +41,8 @@
                     <div class="ui-g-12 ui-md-12">
                         <form autocomplete="on">
                         <div class="panel panel-default pt-1">
-                            <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }" dataKey="id" [paginator]="true" [rows]="7" 
-                            selectionMode="single"  (selection)="onChangeRowSelection($event)"
-                                [(selection)]="selectedRow"     dataKey="id"  (onRowSelect)="onRowSelect($event)" 
+                            <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="7" selectionMode="single"  
+                                dataKey="dishName"  (onRowSelect)="onRowSelect($event)"  
                                 [showCurrentPageReport]="true"currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >
@@ -58,7 +57,7 @@
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-rowData >
-                                    <tr [pSelectableRow]="rowdata" >
+                                    <tr [pSelectableRow]="rowData" >
                                         <td>{{rowData.dishName}}</td>
                                         <td>{{ rowData.price }}</td>
                                         <td>{{ rowData.unitDish }}</td>
@@ -82,11 +81,11 @@
                                 <button class="btn btn-success font-weight-bold" id="exportToExcel" (click)="exportToExcel()">
                                     <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
                                 </button>
-                            <button class="btn btn-info font-weight-bold" >
+                            <button class="btn btn-info font-weight-bold" (click)="createDish()" >
                                 <i class="fa fa-plus mr-1"></i>{{ l('Add') }}
                             </button>
 
-                            <button class="btn btn-warning font-weight-bold" >
+                            <button class="btn btn-warning font-weight-bold" (click)="editDish()">
                                 <i class="far fa-edit mr-1"></i>{{'Edit'}}
                             </button>
 

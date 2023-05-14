@@ -15,7 +15,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
 
     paymentId = 0;
     invoiceInfo: InvoiceDto = new InvoiceDto();
-    companyLogo = AppConsts.appBaseUrl + '/assets/common/images/app-logo-on-light.svg';
+    companyLogo = AppConsts.appBaseUrl + '/assets/common/images/logook.svg';
 
     constructor(
         injector: Injector,
