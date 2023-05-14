@@ -2,23 +2,25 @@
     <div class="ui-g-12">
         <fieldset class="fieldset-border grid-parent">
             <div class="ui-g-12">
-                <div class="ui-g-12">
-                    <h6 class="card-header">
-                         {{ l(' Information Table ') }}
-                    </h6>
-                </div>
+                <div class="card-header">
+                    <div class="row">
+                      <div class="col-6">
+                        <h2 class="text-uppercase">DANH SÁCH NGUYÊN LIỆU</h2>
+                      </div>
+                    </div>
+                  </div>
                 <div class="prod-cont">
                     <div class="ui-g-12">
                         <div class="form-group m-form__group align-items-center">
-                            <div class="input-group">
+                            <div class="input-group color-size">
                                 <div class='input-search'>
 									<input  name='ingredientNameFilter' [(ngModel)]="ingredientNameFilter"
-									class='form-control' [placeholder]="l('ingredientNameFilter')"
+									class='form-control' [placeholder]="l('IngredientName')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class='input-search'>
 									<input  name='unitIngredientFilter' [(ngModel)]="unitIngredientFilter"
-									class='form-control' [placeholder]="l('unitIngredientFilter')"
+									class='form-control' [placeholder]="l('UnitIngredient')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class="btn-search">
@@ -40,19 +42,21 @@
                         
                         <form autocomplete="on">
                         <div class="panel panel-default pt-1">
-                                <p-table [value]="rowData" [tableStyle]="{ 'min-width': '30rem' }"  [paginator]="true" [rows]="7" selectionMode="single" 
-                               dataKey="IngredientName"  (onRowSelect)="onRowSelect($event)" 
+                                <p-table [value]="rowData" [tableStyle]="{ 'min-width': '30rem' }"  [paginator]="true" [rows]="7"  selectionMode="single"
+                               dataKey=""  (onRowSelect)="onRowSelect($event)" 
                                 [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >
                                     <tr>
-                                        <th>IngredientName</th>
-                                        <th>UnitIngredient</th>
-                                        <th>QuantityIngredient</th>
+                                        <th class="small-index">STT</th>
+                                        <th>{{ l("IngredientName") }}</th>
+                                        <th>{{ l("UnitIngredient") }}</th>
+                                        <th>{{ l("QuantityIngredient") }}</th>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-rowData    >
+                                <ng-template pTemplate="body" let-rowData  let-rowIndex="rowIndex" >
                                     <tr [pSelectableRow]="rowData">
+                                        <td class="small-index">{{rowIndex + 1}}</td>
                                         <td>{{rowData.ingredientName}}</td>
                                         <td>{{ rowData.unitIngredient }}</td>
                                         <td>{{ rowData.quantityIngredient }}</td>
@@ -75,11 +79,11 @@
                                     <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
                                 </button>
 
-                            <button class="btn btn-info font-weight-bold" >
+                            <button class="btn btn-info font-weight-bold" (click)="createIngredient()">
                                 <i class="fa fa-plus mr-1"></i>{{ l('Add') }}
                             </button>
 
-                            <button class="btn btn-warning font-weight-bold" >
+                            <button class="btn btn-warning font-weight-bold" (click)="editIngredient()">
                                 <i class="far fa-edit mr-1"></i>{{'Edit'}}
                             </button>
 
@@ -95,5 +99,5 @@
         </fieldset>
     </div>
 </div>
-
+<create-or-edit-ingredient #CreateOrEditIngredient ></create-or-edit-ingredient>
 

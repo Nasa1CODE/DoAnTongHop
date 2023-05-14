@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { IngredientComponent } from "./ingredient.component";
 import { IngredientRoutingModule } from "./ingredient-routing-module";
 import { AppCommonModule } from "@app/shared/common/app-common.module";
+import { CreateOrEditIngredientComponent } from "./create-or-edit-ingredient.component";
 
 
 
@@ -12,6 +13,7 @@ import { AppCommonModule } from "@app/shared/common/app-common.module";
 @NgModule({
     declarations: [
         IngredientComponent, 
+        CreateOrEditIngredientComponent
       
     ],
     imports: [

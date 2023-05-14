@@ -1,0 +1,70 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal"  aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" #DashboardDetail="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="rowData.id">{{ l("EditIngredient") }}</span>
+                        <span *ngIf="!rowData.id">{{ l("CreateIngredient") }}</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" aria-label="Close" [disabled]="saving">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row row-1">
+                        <div [class]="containerClass + ' kt-grid__item kt-grid__item--fluid'">
+                            <div class="kt-portlet kt-portlet--mobile">
+                                <div class="kt-portlet__body">
+                                    <div class="form-input">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                              <div class="form-group">
+                                                  <div class="row input-group">
+                                                      <span class="col-md-4 input-group-addon">{{l("IngredientName")}}</span>
+                                                      <input type="text" class="col-md-8 form-control-combobox ipStRequire" maxlength="255" required
+                                                      [(ngModel)]="rowData.ingredientName" name="ingredientName" />
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="row input-group">
+                                                    <span class="col-md-3 input-group-addon">{{l("UnitIngredient")}}</span>
+                                                    <select name="type" type="text" class="col-md-9 form-control-combobox ipStRequire"
+                                                    required [(ngModel)]="rowData.unitIngredient" name="unitIngredient">
+                                                        <option value="kg">kg</option>
+                                                        <option value="chai">chai</option>
+                                                        <option value="lít">lít</option>
+                                                        <option value="lon">lon</option>
+                                                        <option value="ổ">ổ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="row input-group">
+                                                        <span class="col-md-3 input-group-addon">{{l("QuantityIngredient")}}</span>
+                                                        <input type="number" class="col-md-9 form-control-combobox ipStRequire" maxlength="255" required
+                                                        [(ngModel)]="rowData.quantityIngredient" name="quantityIngredient" />
+                                                    </div>
+                                                </div>
+                                              </div>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]="!DashboardDetail.form.valid"><i class="fa fa-save mr-1"></i>
+                        <span>{{l("Save")}}</span></button>
+                    <button [disabled]="saving" type="button" class="btn btn-danger"
+                        (click)="close()">{{l("Đóng")}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

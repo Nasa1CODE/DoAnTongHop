@@ -2,12 +2,13 @@ import { ColDef, IsColumnFunc, Module } from "@ag-grid-enterprise/all-modules";
 import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { PaginationParamsModel } from "@shared/common/models/models.model";
-import { MstSleIngredientcServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
+import { CreateOrEditMstIngredientDto, MstSleIngredientcServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
 import { ceil } from "lodash";
 import { Paginator } from "primeng/paginator";
 import { finalize } from "rxjs/operators";
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { appModuleAnimation } from "@shared/animations/routerTransition";
+import { CreateOrEditIngredientComponent } from "./create-or-edit-ingredient.component";
 
 @Component({
     templateUrl: './ingredient.component.html',
@@ -18,6 +19,7 @@ import { appModuleAnimation } from "@shared/animations/routerTransition";
 export class IngredientComponent extends AppComponentBase implements OnInit {
   
     @ViewChild('paginator', { static: true }) paginator: Paginator;
+    @ViewChild('CreateOrEditIngredient', { static: true }) CreateOrEditIngredient: CreateOrEditIngredientComponent;
     paginationParams: PaginationParamsModel = {
         pageNum: 1,
         pageSize: 500,
@@ -28,7 +30,7 @@ export class IngredientComponent extends AppComponentBase implements OnInit {
     };
 
     rowSelection:any;
-    selectedRow: MstTableDto = new MstTableDto();
+    selectedRow: CreateOrEditMstIngredientDto = new CreateOrEditMstIngredientDto();
     saveSelectedRow: MstTableDto = new MstTableDto();
     datas: MstTableDto = new MstTableDto();
     isLoading: boolean = false;
@@ -91,7 +93,7 @@ export class IngredientComponent extends AppComponentBase implements OnInit {
         this.selectedRow = selectedRow;
     }
 
-    deleteRow(system: MstTableDto): void {
+    deleteRow(system: CreateOrEditMstIngredientDto): void {
         console.log(system.id);
         this.message.confirm(this.l('AreYouSureToDelete'), 'Delete Row', (isConfirmed) => {
             if (isConfirmed) {
@@ -105,5 +107,13 @@ export class IngredientComponent extends AppComponentBase implements OnInit {
     }
     exportToExcel(): void {
       
+    }
+
+    createIngredient(){
+        this.CreateOrEditIngredient.show(undefined);
+    }
+
+    editIngredient(){
+        this.CreateOrEditIngredient.show(this.selectedRow);
     }
 }

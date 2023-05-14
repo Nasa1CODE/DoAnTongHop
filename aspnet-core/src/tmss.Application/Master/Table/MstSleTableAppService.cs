@@ -33,9 +33,9 @@ namespace tmss.Master.Table
         //CREATE
         private async Task Create(CreateOrEditMstTableDto input)
         {
-            var mainObj = ObjectMapper.Map<MstTableAppService>(input);
-
-            await CurrentUnitOfWork.GetDbContext<tmssDbContext>().AddAsync(mainObj);
+         
+            var newRecord = ObjectMapper.Map<MstTableAppService>(input);
+            await _mstTableAppService.InsertAsync(newRecord);
         }
 
         // EDIT

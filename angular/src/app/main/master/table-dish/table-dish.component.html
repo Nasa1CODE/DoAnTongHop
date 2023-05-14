@@ -2,18 +2,20 @@
     <div class="ui-g-12">
         <fieldset class="fieldset-border grid-parent">
             <div class="ui-g-12">
-                <div class="ui-g-12">
-                    <h6 class="card-header">
-                         {{ l(' Information Table ') }}
-                    </h6>
-                </div>
+                <div class="card-header">
+                    <div class="row">
+                      <div class="col-6">
+                        <h2 class="text-uppercase">DANH SÁCH BÀN ĂN</h2>
+                      </div>
+                    </div>
+                  </div>
                 <div class="prod-cont">
                     <div class="ui-g-12">
                         <div class="form-group m-form__group align-items-center">
                             <div class="input-group">
                                 <div class='input-search'>
 									<input  name='tableNameFilter' [(ngModel)]="tableNameFilter"
-									class='form-control' [placeholder]="l('tableNameFilter')"
+									class='form-control' [placeholder]="l('TableName')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class="btn-search">
@@ -36,22 +38,24 @@
                         <div class="panel panel-default pt-1">
                                 <p-table [value]="rowData" [tableStyle]="{ 'min-width': '30rem' }"  [paginator]="true" [rows]="7" selectionMode="single" 
                                 [(selection)]="selectedRow"     dataKey="tableName"  (onRowSelect)="onRowSelect($event)" 
-                                [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" currentPageReportTemplate="Từ {first} đến {last} của {totalRecords} bản ghi "
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >
                                     <tr>
-                                        <th>TableName</th>
-                                        <th>TableType</th>
-                                        <th>StatusTable</th>
-                                        <th>AmountPeople</th>
+                                        <th class="small-index">STT</th>
+                                        <th>{{ l("TableName") }}</th>
+                                        <th>{{ l("TableType") }}</th>
+                                        <th>{{ l("AmountPeople") }}</th>
+                                        <th>{{ l("StatusTable") }}</th>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-rowData    >
+                                <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex"   >
                                     <tr [pSelectableRow]="rowData">
+                                        <td class="small-index">{{rowIndex + 1}}</td>
                                         <td>{{rowData.tableName}}</td>
                                         <td>{{ rowData.tableType }}</td>
-                                        <td>{{ rowData.statusTable }}</td>
                                         <td>{{ rowData.amountPeople }}</td>
+                                        <td>{{ rowData.statusTable }}</td>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="paginatorleft">
@@ -71,11 +75,11 @@
                                     <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
                                 </button>
 
-                            <button class="btn btn-info font-weight-bold" >
+                            <button class="btn btn-info font-weight-bold" (click)="create()">
                                 <i class="fa fa-plus mr-1"></i>{{ l('Add') }}
                             </button>
 
-                            <button class="btn btn-warning font-weight-bold" >
+                            <button class="btn btn-warning font-weight-bold" (click)="editTable()" >
                                 <i class="far fa-edit mr-1"></i>{{'Edit'}}
                             </button>
 
@@ -92,4 +96,5 @@
     </div>
 </div>
 
+<create-or-edit-table-dish #createOrEditMstTable></create-or-edit-table-dish>
 

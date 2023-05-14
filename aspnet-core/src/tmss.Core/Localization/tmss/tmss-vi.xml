@@ -791,6 +791,25 @@
 	<text name="EmailEmployee">Email</text>
 	<text name="EditEmployee">Sửa thông tin nhân viên</text>
 	<text name="CreateEmployee">Thêm mới thông tin nhân viên</text>
+	  
+	  
+	<text name="TableName">Tên bàn</text>
+	<text name="TableType">Loại bàn</text>
+	<text name="AmountPeople">Số lượng</text>
+	<text name="StatusTable">Trạng thái</text>
+	<text name="EditTable">Sửa thông tin bàn</text>
+	<text name="CreateTable">Thêm mới thông tin bàn </text>
+	 
+	 
+	 	  
+	<text name="IngredientName">Nguyên liệu</text>
+	<text name="UnitIngredient">Đơn vị</text>
+	<text name="QuantityIngredient">Số lượng</text>
+	<text name="EditIngredient">Sửa thông tin nguyên liệu</text>
+	<text name="CreateIngredient">Thêm mới thông tin nguyên liệu </text>
+	
+	  
+  
     
   
   </texts>

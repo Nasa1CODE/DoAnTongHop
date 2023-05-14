@@ -3,6 +3,7 @@ import { TableDishComponent } from "./table-dish.component";
 import { TableRoutingModule } from "./table-dish-routing-module";
 import { MainModule } from "@app/main/main.module";
 import { FormsModule } from "@angular/forms";
+import { CreateOrEditTableDishComponent } from "./create-or-edit-table-dish.component";
 
 
 
@@ -10,7 +11,8 @@ import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
-        TableDishComponent, 
+        TableDishComponent,
+        CreateOrEditTableDishComponent 
       
     ],
     imports: [
@@ -24,3 +26,5 @@ import { FormsModule } from "@angular/forms";
 export class TableDishModule {
     
 }
+
+

@@ -2,14 +2,16 @@
     <div class="ui-g-12">
         <fieldset class="fieldset-border grid-parent">
             <div class="ui-g-12">
-                <div class="ui-g-12">
-                    <h6 class="card-header">
-                         {{ l(' InformationFood ') }}
-                    </h6>
-                </div>
+                <div class="card-header">
+                    <div class="row">
+                      <div class="col-6">
+                        <h2 class="text-uppercase">DANH SÁCH MÓN ĂN</h2>
+                      </div>
+                    </div>
+                  </div>
                 <div class="prod-cont">
                     <div class="ui-g-12">
-                        <div class="form-group m-form__group align-items-center">
+                        <!-- <div class="form-group m-form__group align-items-center"> -->
                             <div class="input-group">
                                 <div class='input-search'>
 									<input  name='nameVn'
@@ -36,17 +38,18 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        <!-- </div> -->
                     </div>
                     <div class="ui-g-12 ui-md-12">
                         <form autocomplete="on">
                         <div class="panel panel-default pt-1">
-                            <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="7" selectionMode="single"  
+                            <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="4" selectionMode="single"  
                                 dataKey="dishName"  (onRowSelect)="onRowSelect($event)"  
                                 [showCurrentPageReport]="true"currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                 [rowsPerPageOptions]="[10, 25, 50]">
                                 <ng-template pTemplate="header"  >
                                     <tr >
+                                        <th class="small-index">STT</th>
                                         <th>DishName</th>
                                         <th>Price</th>
                                         <th>UnitDish</th>
@@ -56,13 +59,14 @@
 
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-rowData >
+                                <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" >
                                     <tr [pSelectableRow]="rowData" >
+                                        <td class="small-index">{{rowIndex + 1}}</td>
                                         <td>{{rowData.dishName}}</td>
-                                        <td>{{ rowData.price }}</td>
+                                        <td>{{rowData.price | number:'1.0' }} VND</td>
                                         <td>{{ rowData.unitDish }}</td>
                                         <td>{{ rowData.dishType }}</td>
-                                        <td>{{ rowData.imageDish }}</td>
+                                        <td><img src="../../../assets/img/course/{{rowData.imageDish}}" alt="food" style="width: 20vh; height: 9svh;"> </td>  
                                         <td>{{ rowData.statusDish }}</td>
                                     </tr>
                                 </ng-template>

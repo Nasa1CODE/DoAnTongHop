@@ -63,6 +63,7 @@ export class CreateOrEditEmployeeComponent extends AppComponentBase {
   }
 
   close(): void {
+    this._mstSleEmployee.searchDatas();
     this.active = false;
     this.modal.hide();
   }
