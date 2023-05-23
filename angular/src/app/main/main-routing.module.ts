@@ -30,6 +30,11 @@ import { RouterModule } from '@angular/router';
                         loadChildren: () => import('./master/ingredient/ingredient.module').then(m => m.IngredientModule),
                         
                     },
+                    {
+                        path: 'sales/invoice',
+                        loadChildren: () => import('./sales/invoice/invoice.module').then(m => m.InvoiceModule),
+                        
+                    },
                     { path: '**', redirectTo: 'dashboard' },
                     
                 ],

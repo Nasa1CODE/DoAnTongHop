@@ -807,10 +807,20 @@
 	<text name="QuantityIngredient">Số lượng</text>
 	<text name="EditIngredient">Sửa thông tin nguyên liệu</text>
 	<text name="CreateIngredient">Thêm mới thông tin nguyên liệu </text>
-	
-	  
-  
-    
-  
+
+	<text name="DishName">Món ăn</text>
+	<text name="Price">Đơn giá</text>
+	<text name="UnitDish">Đơn vị</text>
+	<text name="DishType">Loại</text>
+	<text name="ImageDish">Ảnh </text>
+	<text name="StatusDish">Trạng thái</text>
+	<text name="EditDish">Sửa thông tin món ăn</text>
+	<text name="CreateDish">Thêm mới thông tin món ăn</text>
+
+
+
+
+
+
   </texts>
 </localizationDictionary>

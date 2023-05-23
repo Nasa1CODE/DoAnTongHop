@@ -1,4 +1,4 @@
-import { ColDef, IsColumnFunc, Module } from "@ag-grid-enterprise/all-modules";
+import { ClientSideRowModelModule, ColDef, IsColumnFunc, Module } from "@ag-grid-enterprise/all-modules";
 import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { PaginationParamsModel } from "@shared/common/models/models.model";
@@ -6,7 +6,6 @@ import { CreateOrEditMstTableDto, MstSleTableServiceProxy, MstTableDto } from "@
 import { ceil } from "lodash";
 import { Paginator } from "primeng/paginator";
 import { finalize } from "rxjs/operators";
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { CreateOrEditTableDishComponent } from "./create-or-edit-table-dish.component";
 

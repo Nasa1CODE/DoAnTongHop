@@ -5,8 +5,8 @@
             <form *ngIf="active" #DashboardDetail="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="rowdata.id">{{ l("Sửa") }}</span>
-                        <span *ngIf="!rowdata.id">{{ l("Thêm mới") }}</span>
+                        <span *ngIf="rowData.id">{{ l("EditDish") }}</span>
+                        <span *ngIf="!rowData.id">{{ l("CreateDish") }}</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" aria-label="Close" [disabled]="saving">
                         <span aria-hidden="true">&times;</span>
@@ -18,26 +18,69 @@
                             <div class="kt-portlet kt-portlet--mobile">
                                 <div class="kt-portlet__body">
                                     <div class="form-input">
-                                    	<div class='col-md-12 form-group row'>
-                                            <label class='col-md-2 form-control title'>Employee Name</label>
-                                            <input type='text' class='col-md-10 form-control input-text' name='InvoiceId' [(ngModel)]='rowdata.employeeName'>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <div class="row input-group">
+                                                      <span class="col-md-3 input-group-addon">{{l("DishName")}}</span>
+                                                      <input type="text" class="col-md-9 form-control-combobox ipStRequire" maxlength="255" required
+                                                      [(ngModel)]="rowData.dishName" name="dishName" />
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="row input-group">
+                                                        <span class="col-md-3 input-group-addon">{{l("Price")}}</span>
+                                                        <input type="number" class="col-md-9 form-control-combobox ipStRequire" maxlength="255" required
+                                                        [(ngModel)]="rowData.price" name="price" />
+                                                    </div>
+                                                </div>
+                                              </div>
                                         </div>
-                                        <div class='col-md-12 form-group row'>
-                                            <label class='col-md-2 form-control title'>Position</label>
-                                            <input type='text' class='col-md-10 form-control input-text' name='position' [(ngModel)]='rowdata.position'>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row input-group">
+                                                    <span class="col-md-3 input-group-addon">{{l("UnitDish")}}</span>
+                                                    <select name="type" type="text" class="col-md-9 form-control-combobox ipStRequire"
+                                                    required [(ngModel)]="rowData.unitDish" name="unitDish">
+                                                        <option value="Đĩa">Đĩa</option>
+                                                        <option value="Cái">Cái</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="row input-group">
+                                                        <span class="col-md-3 input-group-addon">{{l("DishType")}}</span>
+                                                        <input type="text" class="col-md-9 form-control-combobox ipStRequire" maxlength="255" required
+                                                        [(ngModel)]="rowData.dishType" name="dishType" />
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class='col-md-12 form-group row'>
-                                            <label class='col-md-2 form-control title'>Phone Number</label>
-                                            <input type='text' class='col-md-10 form-control input-text' name='phoneNumber' [(ngModel)]='rowdata.phoneNumber'>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="row input-group">
+                                                        <span class="col-md-3 input-group-addon">{{l("StatusDish")}}</span>
+                                                        <input type="text" class="col-md-9 form-control-combobox ipStRequire" maxlength="255" required
+                                                        [(ngModel)]="rowData.statusDish" name="statusDish" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row input-group">
+                                                    <span class="col-md-3 input-group-addon">{{l("statusDish")}}</span>
+                                                    <select name="type" type="text" class="col-md-9 form-control-combobox ipStRequire"
+                                                    required [(ngModel)]="rowData.statusDish" name="statusDish">
+                                                        <option value="Đang kinh doanh">Đang kinh doanh</option>
+                                                        <option value="Không kinh doanh">Không kinh doanh</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class='col-md-12 form-group row'>
-                                            <label class='col-md-2 form-control title'>Adrress Employee</label>
-                                            <input type='text' class='col-md-10 form-control input-text' name='adrressEmployee' [(ngModel)]='rowdata.adrressEmployee'>
-                                        </div>
-                                        <div class='col-md-12 form-group row'>
-                                            <label class='col-md-2 form-control title'>Email Employee</label>
-                                            <input type='text' class='col-md-10 form-control input-text' name='emailEmployee' [(ngModel)]='rowdata.emailEmployee'>
-                                        </div>
+                                          
                                     </div>
                                 </div>
                             </div>
@@ -54,3 +97,4 @@
         </div>
     </div>
 </div>
+

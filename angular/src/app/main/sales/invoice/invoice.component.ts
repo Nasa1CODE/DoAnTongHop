@@ -1,24 +1,23 @@
-import { ClientSideRowModelModule, ColDef, IsColumnFunc, Module } from "@ag-grid-enterprise/all-modules";
+import { AllCommunityModules, AllModules, ColDef, IsColumnFunc, Module } from "@ag-grid-enterprise/all-modules";
 import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { PaginationParamsModel } from "@shared/common/models/models.model";
-import { CreateOrEditMstIngredientDto, MstSleIngredientcServiceProxy, MstTableDto } from "@shared/service-proxies/service-proxies";
+import { CreateOrEditMstIngredientDto, MstTableDto, SalesInvoiceServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ceil } from "lodash";
 import { Paginator } from "primeng/paginator";
-import { finalize } from "rxjs/operators";
 import { appModuleAnimation } from "@shared/animations/routerTransition";
-import { CreateOrEditIngredientComponent } from "./create-or-edit-ingredient.component";
+import { ClientSideRowModelModule} from "@ag-grid-enterprise/all-modules";
 
 @Component({
-    templateUrl: './ingredient.component.html',
+    templateUrl: './invoice.component.html',
     encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./ingredient.component.less'],
+    styleUrls: ['./invoice.component.less'],
     animations: [appModuleAnimation()]
 })
-export class IngredientComponent extends AppComponentBase implements OnInit {
+export class InvoiceComponent extends AppComponentBase implements OnInit {
   
     @ViewChild('paginator', { static: true }) paginator: Paginator;
-    @ViewChild('CreateOrEditIngredient', { static: true }) CreateOrEditIngredient: CreateOrEditIngredientComponent;
+    // @ViewChild('CreateOrEditIngredient', { static: true }) CreateOrEditIngredient: CreateOrEditIngredientComponent;
     paginationParams: PaginationParamsModel = {
         pageNum: 1,
         pageSize: 500,
@@ -28,6 +27,7 @@ export class IngredientComponent extends AppComponentBase implements OnInit {
         totalPage: 1,
     };
 
+    filterText;
     rowSelection:any;
     selectedRow: CreateOrEditMstIngredientDto = new CreateOrEditMstIngredientDto();
     saveSelectedRow: MstTableDto = new MstTableDto();
@@ -41,10 +41,9 @@ export class IngredientComponent extends AppComponentBase implements OnInit {
 
     modules: Module[] = [ClientSideRowModelModule];
 
-
     constructor(
         injector: Injector,
-        private _service: MstSleIngredientcServiceProxy,
+        private _service: SalesInvoiceServiceProxy,
     ) {
         super(injector);
        
@@ -56,8 +55,7 @@ export class IngredientComponent extends AppComponentBase implements OnInit {
 
     searchDatas(): void {
         this._service.getAll(
-			this.ingredientNameFilter,
-			this.unitIngredientFilter,
+            this.filterText,
 			'',
             this.paginationParams.skipCount,
             this.paginationParams.pageSize
@@ -78,8 +76,7 @@ export class IngredientComponent extends AppComponentBase implements OnInit {
 
     getDatas() {
         return this._service.getAll(
-            this.ingredientNameFilter,
-			this.unitIngredientFilter,
+            this.filterText,
 			'',
             this.paginationParams.skipCount,
             this.paginationParams.pageSize
@@ -92,27 +89,28 @@ export class IngredientComponent extends AppComponentBase implements OnInit {
         this.selectedRow = selectedRow;
     }
 
-    deleteRow(system: CreateOrEditMstIngredientDto): void {
-        console.log(system.id);
-        this.message.confirm(this.l('AreYouSureToDelete'), 'Delete Row', (isConfirmed) => {
-            if (isConfirmed) {
-                this._service.delete(system.id).subscribe(() => {
-                    this.searchDatas();
-                    this.notify.success(this.l('SuccessfullyDeleted'));
-                    this.notify.info(this.l('SuccessfullyDeleted'));
-                });
-            }
-        });
-    }
     exportToExcel(): void {
       
     }
 
-    createIngredient(){
-        this.CreateOrEditIngredient.show(undefined);
-    }
+    // createIngredient(){
+    //     this.CreateOrEditIngredient.show(undefined);
+    // }
 
-    editIngredient(){
-        this.CreateOrEditIngredient.show(this.selectedRow);
-    }
+    // editIngredient(){
+    //     this.CreateOrEditIngredient.show(this.selectedRow);
+    // }
+
+
+    columnDefs = [
+		{headerName: 'Make', field: 'make' },
+		{headerName: 'Model', field: 'model' },
+		{headerName: 'Price', field: 'price'}
+	];
+
+    rowData_test = [
+		{ make: 'Toyota', model: 'Celica', price: 35000 },
+		{ make: 'Ford', model: 'Mondeo', price: 32000 },
+		{ make: 'Porsche', model: 'Boxster', price: 72000 }
+	];
 }

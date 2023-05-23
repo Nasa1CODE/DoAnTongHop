@@ -15,6 +15,7 @@ using tmss.MultiTenancy.Accounting;
 using tmss.MultiTenancy.Payments;
 using tmss.Storage;
 using tmss.tmss.Master;
+using tmss.tmss.Sales;
 
 namespace tmss.EntityFrameworkCore
 {
@@ -48,7 +49,8 @@ namespace tmss.EntityFrameworkCore
         public virtual DbSet<MstTableAppService> MstTableAppServices { get; set; }
         public virtual DbSet<MstDishAppService> MstDishAppServices { get; set; }
         public virtual DbSet<MstEmployeeAppService> MstEmployeeAppServices { get; set; }
-        public virtual DbSet<MstIngredientcAppService> MstIngredientcAppServices { get; set; }
+        public virtual DbSet<MstIngredientcAppService> MstIngredientcAppServices { get; set; }  
+        public virtual DbSet<SalesInvoiceAppService> SalesInvoiceAppServices { get; set; }
 
         public tmssDbContext(DbContextOptions<tmssDbContext> options)
             : base(options)

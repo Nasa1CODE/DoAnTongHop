@@ -55,7 +55,8 @@ import { AgGridModule } from '@ag-grid-community/angular';
     imports: [
         CommonModule,
         FormsModule,
-        AgGridModule.withComponents([ ]),
+        // AgGridModule.withComponents([ ]),
+        AgGridModule.withComponents([]),
         ReactiveFormsModule,
         ModalModule.forRoot(),
         UtilsModule,

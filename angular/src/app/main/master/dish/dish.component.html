@@ -16,13 +16,13 @@
                                 <div class='input-search'>
 									<input  name='nameVn'
                                     [(ngModel)]="dishNameFilter"
-									class='form-control' [placeholder]="l('DishNameFilter')"
+									class='form-control' [placeholder]="l('DishName')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class='input-search'>
 									<input  name='nameVn'
                                     [(ngModel)]="priceFilter"
-									class='form-control' [placeholder]="l('PriceFilter')"
+									class='form-control' [placeholder]="l('Price')"
 									type='text' (keyup.enter)='searchDatas()'>
 								</div>
                                 <div class="btn-search">
@@ -46,17 +46,16 @@
                             <p-table [value]="rowData" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="4" selectionMode="single"  
                                 dataKey="dishName"  (onRowSelect)="onRowSelect($event)"  
                                 [showCurrentPageReport]="true"currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                                [rowsPerPageOptions]="[10, 25, 50]">
+                                [rowsPerPageOptions]="[5, 10, 25, 50]">
                                 <ng-template pTemplate="header"  >
                                     <tr >
                                         <th class="small-index">STT</th>
-                                        <th>DishName</th>
-                                        <th>Price</th>
-                                        <th>UnitDish</th>
-                                        <th>DishType</th>
-                                        <th>ImageDish</th>
-                                        <th>StatusDish</th>
-
+                                        <th>{{ l("DishName") }}</th>
+                                        <th>{{ l("Price") }}</th>
+                                        <th>{{ l("UnitDish") }}</th>
+                                        <th>{{ l("DishType") }}</th>
+                                        <th>{{ l("ImageDish") }}</th>
+                                        <th>{{ l("StatusDish") }}</th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" >
@@ -105,5 +104,7 @@
         </fieldset>
     </div>
 </div>
+
+<create-or-edit-dish #createOrEditDish></create-or-edit-dish>
 
 

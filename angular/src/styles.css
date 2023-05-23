@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+You can add global styles to this file, and also import other style files
 .margin-left-5 {
     margin-left: 5px !important;
 }
@@ -150,3 +150,13 @@ ngx-spinner .loading-text{
     color: white;
     font-size: 1.3em;
 }
+
+
+@media (min-width: 1025px) { 
+    body.kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled .kt-wrapper {
+        padding-top: 56px;
+    }
+}
+
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";

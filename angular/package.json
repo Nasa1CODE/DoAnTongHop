@@ -17,6 +17,7 @@
   "private": false,
   "dependencies": {
     "@ag-grid-community/angular": "25.0.0",
+    "@ag-grid-community/client-side-row-model": "^29.3.5",
     "@ag-grid-enterprise/all-modules": "25.0.0",
     "@angular/animations": "^9.1.0",
     "@angular/cdk": "9.2.0",
@@ -34,6 +35,7 @@
     "abp-ng2-module": "^6.0.0",
     "abp-web-resources": "^5.2.0",
     "adal-angular": "^1.0.17",
+    "ag-grid-angular": "^27.3.0",
     "angular-gridster2": "^9.1.0",
     "angular-oauth2-oidc": "^9.2.0",
     "angular2-counto": "^1.2.5",

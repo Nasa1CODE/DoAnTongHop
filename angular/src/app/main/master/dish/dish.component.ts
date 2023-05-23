@@ -111,7 +111,7 @@ export class DishComponent extends AppComponentBase implements OnInit {
 
     deleteRow(system: CreateOrEditMstDishDto): void {
         console.log(system.id);
-        this.message.confirm(this.l('AreYouSureToDelete'), 'Delete Row', (isConfirmed) => {
+        this.message.confirm(this.l('AreYouSureTo'), 'Delete', (isConfirmed) => {
             if (isConfirmed) {
                 this._service.delete(system.id).subscribe(() => {
                     this.searchDatas();

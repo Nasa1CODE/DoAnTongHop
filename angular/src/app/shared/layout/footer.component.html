@@ -2,10 +2,10 @@
     <div [class]="containerClass" *ngIf="useBottomDiv">
         <div class="kt-footer__bottom">
             <div class="kt-footer__copyright">
-             <span
+             <!-- <span
                     *ngIf="appSession.tenant && appSession.tenant.edition && appSession.tenant.edition.displayName">
                     {{appSession.tenant.edition.displayName}}</span> | API: v{{appSession.application.version}} | Client: v{{webAppGuiVersion}}
-                [{{releaseDate}}]
+                [{{releaseDate}}] -->
             </div>
             <div class="kt-footer__menu">
             </div>
@@ -14,10 +14,10 @@
     <div [class]="containerClass" *ngIf="!useBottomDiv">
         <div class="kt-footer__wrapper">
             <div class="kt-footer__copyright">
-                 <span
+                 <!-- <span
                     *ngIf="appSession.tenant && appSession.tenant.edition && appSession.tenant.edition.displayName">
                     {{appSession.tenant.edition.displayName}}</span> | API: v{{appSession.application.version}} | Client: v{{webAppGuiVersion}}
-                [{{releaseDate}}]
+                [{{releaseDate}}] -->
             </div>
             <div class="kt-footer__menu">
             </div>
