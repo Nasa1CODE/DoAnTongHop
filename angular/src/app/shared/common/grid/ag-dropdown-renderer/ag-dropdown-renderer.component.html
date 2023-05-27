@@ -1,0 +1,7 @@
+<form #form="ngForm">
+    <select [id]="idSelect" #selectTag [disabled]="disableSelect? true: null" class="form-control p-0" [(ngModel)]="select" name="select" (ngModelChange)="field === 'bpJobgroup' ? undefined : onValueChange($event)">
+    <option *ngFor="let select of selectList" [ngValue]="select[value]">
+      {{select[label]}}
+    </option>
+  </select>
+</form>

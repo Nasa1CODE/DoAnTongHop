@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
+
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppLocalizationService } from '@app/shared/common/localization/app-localization.service';
 import { AppNavigationService } from '@app/shared/layout/nav/app-navigation.service';
 import { tmssCommonModule } from '@shared/common/common.module';
@@ -39,7 +38,6 @@ import { FilterDateRangePickerComponent } from './customizable-dashboard/filters
 import { AddWidgetModalComponent } from './customizable-dashboard/add-widget-modal/add-widget-modal.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { CountoModule } from 'angular2-counto';
 import { AppBsModalModule } from '@shared/common/appBsModal/app-bs-modal.module';
 import { SingleLineStringInputTypeComponent } from './input-types/single-line-string-input-type/single-line-string-input-type.component';
@@ -48,6 +46,26 @@ import { CheckboxInputTypeComponent } from './input-types/checkbox-input-type/ch
 import { MultipleSelectComboboxInputTypeComponent } from './input-types/multiple-select-combobox-input-type/multiple-select-combobox-input-type.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { AgGridModule } from '@ag-grid-community/angular';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { SimpleAgGridComponent } from './ag-grid-custom/simple-ag-grid/simple-ag-grid.component';
+import { AgDatepickerRendererComponent } from './grid/ag-datepicker-renderer/ag-datepicker-renderer.component';
+import { TmssDatepickerComponent } from './input-types copy/tmss-datepicker/tmss-datepicker.component';
+import { TmssSearchInputComponent } from './input-types copy/tmss-search-input/tmss-search-input.component';
+import { TmssCheckboxComponent } from './input-types copy/tmss-checkbox/tmss-checkbox.component';
+import { TmssComboboxComponent } from './input-types copy/tmss-combobox/tmss-combobox.component';
+import { TmssTextInputComponent } from './input-types copy/tmss-text-input/tmss-text-input.component';
+import { TmssTextareaComponent } from './input-types copy/tmss-textarea/tmss-textarea.component';
+import { GridTableComponent } from './ag-grid-custom/grid-table/grid-table.component';
+import { GridPaginationComponent } from './ag-grid-custom/grid-pagination/grid-pagination.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgCheckboxRendererComponent } from './grid/ag-checkbox-renderer/ag-checkbox-renderer.component';
+import { AgDropdownRendererComponent } from './grid/ag-dropdown-renderer/ag-dropdown-renderer.component';
+import { AgFloatingFilterGridComponent } from './grid/ag-floating-filter-grid/ag-floating-filter-grid.component';
+import { AgHeaderButtonGridComponent } from './grid/ag-header-button-grid/ag-header-button-grid.component';
+import { TmssMultiColumnDropdownComponent } from './grid/tmss-multi-column-dropdown/tmss-multi-column-dropdown.component';
+import { TmssSelectGridModalComponent } from './grid/tmss-select-grid-modal/tmss-select-grid-modal.component';
+import { AgFilterGridComponent } from './grid/ag-filter-grid/ag-filter-grid.component';
 
 
 
@@ -59,6 +77,7 @@ import { AgGridModule } from '@ag-grid-community/angular';
         AgGridModule.withComponents([]),
         ReactiveFormsModule,
         ModalModule.forRoot(),
+        FormsModule,
         UtilsModule,
         tmssCommonModule,
         TableModule,
@@ -100,7 +119,23 @@ import { AgGridModule } from '@ag-grid-community/angular';
         ComboboxInputTypeComponent,
         CheckboxInputTypeComponent,
         MultipleSelectComboboxInputTypeComponent,
-        //SimpleAgGridComponent
+        SimpleAgGridComponent,
+        AgDatepickerRendererComponent,
+        TmssDatepickerComponent,
+        TmssSearchInputComponent,
+        TmssCheckboxComponent,
+        TmssComboboxComponent,
+        TmssTextInputComponent,
+        TmssTextareaComponent,
+        GridTableComponent,
+        GridPaginationComponent,
+        AgCheckboxRendererComponent,
+        AgDropdownRendererComponent,
+        AgFloatingFilterGridComponent,
+        AgHeaderButtonGridComponent,
+        TmssMultiColumnDropdownComponent,
+        TmssSelectGridModalComponent,
+        AgFilterGridComponent
         
     ],
     exports: [
@@ -113,7 +148,24 @@ import { AgGridModule } from '@ag-grid-community/angular';
         CustomizableDashboardComponent,
         NgxChartsModule,
         AgGridModule,
-        TableModule
+        TableModule,
+        SimpleAgGridComponent,
+        AgDatepickerRendererComponent,
+        TmssDatepickerComponent,
+        TmssSearchInputComponent,
+        TmssCheckboxComponent,
+        TmssComboboxComponent,
+        TmssTextInputComponent,
+        TmssTextareaComponent,
+        GridTableComponent,
+        GridPaginationComponent,
+        AgCheckboxRendererComponent,
+        AgDropdownRendererComponent,
+        AgFloatingFilterGridComponent,
+        AgHeaderButtonGridComponent,
+        TmssMultiColumnDropdownComponent,
+        TmssSelectGridModalComponent,
+        AgFilterGridComponent
     ],
     providers: [
         DateTimeService,
@@ -141,7 +193,20 @@ import { AgGridModule } from '@ag-grid-community/angular';
         SingleLineStringInputTypeComponent,
         ComboboxInputTypeComponent,
         CheckboxInputTypeComponent,
-        MultipleSelectComboboxInputTypeComponent
+        MultipleSelectComboboxInputTypeComponent,
+        TmssDatepickerComponent,
+        TmssSearchInputComponent,
+        TmssCheckboxComponent,
+        TmssComboboxComponent,
+        TmssTextInputComponent,
+        TmssTextareaComponent,
+        AgCheckboxRendererComponent,
+        AgDropdownRendererComponent,
+        AgFloatingFilterGridComponent,
+        AgHeaderButtonGridComponent,
+        TmssMultiColumnDropdownComponent,
+        TmssSelectGridModalComponent,
+        AgFilterGridComponent
     ]
 })
 export class AppCommonModule {

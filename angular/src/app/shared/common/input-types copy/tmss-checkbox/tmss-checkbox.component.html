@@ -1,0 +1,21 @@
+
+<div *ngIf="show" class="checkbox-container" [ngClass]="className? className +' checkbox':'checkbox '">
+  <div class="checkbox-text pr-3"
+    *ngIf="rightCheckbox" [addonWidth]="labelWidth">
+    {{ text }}
+  </div>
+  <input
+    type="checkbox"
+    #iCheckBox
+    class="checkbox-control"
+    (change)="onChangeValue($event.currentTarget.checked)"
+    name="name"
+    [checked]="selectedValue"
+    [value]="value" 
+    [disabled]="isDisabled ? true : null"
+    />
+  <div class="checkbox-text pl-3"
+    *ngIf="!rightCheckbox">
+    {{ text }}
+  </div>
+</div>

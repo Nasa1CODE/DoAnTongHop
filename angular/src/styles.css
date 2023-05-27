@@ -158,5 +158,109 @@ ngx-spinner .loading-text{
     }
 }
 
-@import "~ag-grid-community/dist/styles/ag-grid.css";
-@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+/* TMSS-COMBOBOX */
+.form-group .input-group .input-search tmss-combobox { width: 100%;}
+.form-group .input-group .input-search tmss-combobox > div.input-group { background-color: white; width: 100%; height: 24.44px; position: relative; display: flex; align-items: center; }
+.form-group .input-group .input-search tmss-combobox > div.input-group > span.input-group-text {
+    line-height: 1.5; height: 24.44px; padding: 0.15rem 0.3rem;  position: absolute; z-index: 0; background: transparent; border: none; color: var(--kt-input-color-placeholder); font-size: 0.9rem; font-weight: 500;
+}
+.form-group .input-group .input-search tmss-combobox > div.input-group > select { position: absolute; z-index: 2; background: transparent; width: 100%; }
+tmss-combobox > .input-group > .ng-arrow-wrapper { cursor: pointer; position: absolute; text-align: center; -webkit-user-select: none; user-select: none; right: 0px; z-index: 1;}
+tmss-combobox > .input-group > .ng-arrow-wrapper { width: 25px;  padding-right: 5px; }
+tmss-combobox > .input-group > .ng-arrow-wrapper .ng-arrow { pointer-events: none; display: inline-block; height: 0; width: 0; position: relative; }
+tmss-combobox > .input-group > .ng-arrow-wrapper .ng-arrow {  border-color: #999 transparent transparent; border-style: solid; border-width: 5px 5px 2.5px; }
+
+
+@media print {
+
+    table {
+         page-break-after:always ;
+        }
+  tr    {
+       page-break-inside:avoid;
+       page-break-after:always ;
+    }
+  td    {
+      page-break-inside:avoid;
+      page-break-after:always;
+ }
+  thead { display:table-header-group }
+  tfoot { display:table-footer-group }
+  body *{
+    visibility: hidden;
+  }
+  tab {
+      position: absolute;
+      top : 0;
+  }
+  tab * {
+    visibility: visible !important;
+  }
+  .claim-status-report * {
+    visibility: hidden !important;
+  }
+  html, body {
+    height:auto;
+    position: static;
+    /* margin: 0 !important;
+    padding: 0 !important; */
+    overflow: auto;
+  }
+
+
+  /* html, body {margin: 0; min-height: 100%; overflow: hidden} */
+  .modal > .modal-dialog > .modal-content > .modal-body {
+    height: auto;
+    /* min-height: 710px; */
+    /* overflow: auto !important; */
+    position: relative;
+    overflow:visible!important;
+  }
+  .modal > .modal-dialog > .modal-content > .claim-form > .modal-body {
+    height: auto;
+    /* min-height: 710px; */
+    /* overflow: auto !important; */
+    position: relative;
+    overflow:visible!important;
+
+  }
+  .modal > .modal-dialog {
+    min-width:94%;
+    margin-left:3%;
+    margin-right:3%;
+    page-break-after:auto
+  }
+  /* .modal-content {
+    overflow: none !important;
+    page-break-after:auto;
+  } */
+
+  claim-detail-view-modal *{
+    visibility: visible !important;
+    page-break-after:auto
+  }
+  claim-detail-modal *{
+    visibility: visible !important;
+    page-break-after:auto
+  }
+  claim-tmv-create-modal *{
+    visibility: visible !important;
+    page-break-after:auto
+  }
+  .modal {
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    visibility: visible !important;
+    /**Remove scrollbar for printing.**/
+    page-break-after:auto;
+    overflow: visible !important;
+  }
+  .modal-dialog {
+    visibility: visible !important;
+    /**Remove scrollbar for printing.**/
+    overflow: visible !important;
+  }
+}

@@ -1,0 +1,14 @@
+<div class="ui-g-12 ph-0" id="button-container">
+    <button
+        *ngIf="headerButtonDef"
+        type="button"
+        class="ag-in-cell-button"
+        (click)="customFunction()"
+        [disabled]="disableButton"
+        [buttonBusy]="headerButtonDef && headerButtonDef.busy"
+        [busyText]="'Đang xử lý'"
+        [ngClass]="headerButtonDef.className ? headerButtonDef.className : 'tmss-btn btn-outline-primary'">
+        <i style="margin-right: 5px;" *ngIf="headerButtonDef.iconName" class="{{ headerButtonDef.iconName }} tmss-fa"></i>
+        <span style="position: relative; top: -3px; margin-top: 5px;">{{ displayText }}</span>
+    </button>
+</div>

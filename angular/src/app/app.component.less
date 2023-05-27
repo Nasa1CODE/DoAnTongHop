@@ -1,1 +1,547 @@
 /* App level styles */
+::ng-deep {
+    .nav-tabs .nav-item {
+        width: 180px !important;
+        margin-bottom: -1px;
+        height: 40px;
+    }
+
+    span.bs-remove-tab.ng-star-inserted {
+        font-size: 0.8rem !important;
+    }
+
+    .nav-tabs .nav-item .nav-link span:first-child {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline;
+    }
+
+    .nav-tabs .nav-item .nav-link.active {
+        background-image: linear-gradient(to bottom right, #29323c 0%, #48556345 100%);
+        color: #fff;
+        border-bottom: 1px solid #C83A2A;
+    }
+
+    .nav-tabs .nav-item .nav-link {
+        height: 32px;
+        padding: 0.75rem 1rem;
+        border: none;
+    }
+
+    .nav-tabs .nav-item {
+        height: 32px;
+    }
+
+    .nav-item {
+        border-right: 1px solid #babfc7;
+    }
+
+    .ag-rich-select-value {
+        display: none !important;
+    }
+
+    // ------------ Style button ------------
+    .tmss-btn {
+        border-radius: 6px;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.9rem;
+        font-weight: 450;
+        cursor: pointer;
+        min-width: 3rem;
+        -webkit-box-align: center;
+        padding: 3px 8px !important;
+        white-space: nowrap;
+        border-width: 0.0625em;
+        vertical-align: middle;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        margin-bottom: 0.25rem;
+        background-color: transparent;
+    }
+
+    .nav-tabs .nav-item .nav-link>span:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    body {
+        font-family: 'Roboto' !important;
+    }
+
+    .tmss-footer-btn:last-child {
+        margin-right: 0;
+    }
+
+    .tmss-btn[disabled] {
+        pointer-events: none;
+        border-color: #6c757d;
+        color: #6c757d;
+        cursor: not-allowed;
+    }
+
+    .tmss-btn:hover {
+        font-weight: 400;
+    }
+
+    .tmss-footer-btn {
+        padding: 4px 8px;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        margin-bottom: 0.25rem;
+        min-width: 5rem;
+    }
+
+    // ------------ End Style button ------------
+
+    // ------------ Fieldset Style ------------
+    .fieldset-border {
+        border: none;
+        padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+        margin-bottom: 0.5rem;
+        background-color: #fff !important;
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    .bg-transparent {
+        background-color: transparent !important;
+    }
+
+    .legend-border {
+        font-size: 0.9em;
+        font-weight: 600;
+        text-align: left;
+        width: auto;
+        padding: 0 5px;
+        border-bottom: none;
+    }
+
+    // ------------ End Fieldset button ------------
+
+    // -------- Ag grid Cell Class ---------
+    .cell-border {
+        border-right: 1px solid #d9dcde !important;
+
+        &:focus {
+            border-right: 1px solid #0091EA !important;
+        }
+    }
+
+    .text-left>.ag-cell-wrapper>.ag-cell-value {
+        text-align: left !important;
+        padding-left: 8px !important;
+    }
+
+    .text-right>.ag-cell-wrapper>.ag-cell-value {
+        text-align: right !important;
+        padding-right: 8px !important;
+    }
+
+    .text-center>.ag-cell-wrapper>.ag-cell-value {
+        text-align: center !important;
+    }
+
+    .cell-text-left{
+        justify-content: start !important;
+    }
+
+    .cell-text-right{
+        justify-content: end!important;
+    }
+
+    .cell-text-center{
+        justify-content: center !important;
+    }
+
+    .cell-clickable {
+        background-color: #FFFFCC !important;
+        cursor: pointer;
+        border-bottom: 1px solid #dde2eb !important;
+
+        &:hover {
+            background-color: darken(#FFFFCC, 10%) !important;
+        }
+    }
+
+    .text-center>.ag-cell-wrapper {
+        text-align: center !important;
+    }
+
+    .p-0 {
+        padding: 0 !important;
+    }
+
+    // ---------End Ag grid Style----------
+
+
+    // ------------ Style Modal --------------
+    .tmss-modal .tmss-modal-header {
+        margin: 0.5rem 1rem 0.5rem 1rem;
+    }
+
+    .tmss-modal .tmss-modal-body {
+        margin: 0 2rem 1rem 2rem;
+    }
+
+    .tmss-modal .tmss-modal-footer {
+        margin: 0 2rem 0rem 2rem;
+    }
+
+    .tmss-modal .tmss-modal-header .tmss-close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: #999;
+        line-height: 10px;
+        cursor: pointer;
+    }
+
+    .tmss-modal-lg {
+        min-width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .tmss-modal-md {
+        min-width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .tmss-modal-sm {
+        min-width: 40%;
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+
+    // ------------ End Style Modal --------------
+
+    // ------------ Style Scrollbar --------------
+    ::-webkit-scrollbar {
+        width: 8px;
+        margin-top: 1rem;
+        -webkit-appearance: true;
+        height: 8px !important;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #999;
+        //border-radius: 6px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #777;
+    }
+
+    // ----------- End Style Scrollbar -----------
+
+    // -------------- Style Grid Column Bootstrap --------------
+    .col-1,
+    .col-2,
+    .col-3,
+    .col-4,
+    .col-5,
+    .col-6,
+    .col-7,
+    .col-8,
+    .col-9,
+    .col-10,
+    .col-11,
+    .col-12 {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    .ui-g-12,
+    .ui-g-6,
+    .ui-g-3,
+    .ui-g-1,
+    .ui-g-2,
+    .ui-g-7,
+    .ui-g-4,
+    .ui-g-5,
+    .ui-g-8 {
+        padding-top: 0.05rem;
+        padding-bottom: 0.05rem;
+    }
+
+    .tmss-ui-row>div {
+        padding-right: 0;
+    }
+
+    .tmss-ui-row>div:first-child {
+        padding-left: 0;
+    }
+
+    .fieldset-border.ui-g-12 {
+        padding-bottom: 0.75rem;
+    }
+
+    // padding horizontal = 0
+    .ph-0 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .mr-0 {
+        margin-right: 0 !important;
+    }
+
+    .ml-0 {
+        margin-left: 0 !important;
+    }
+
+    // padding vertical = 0
+    .pv-0 {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .mv-0 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .mh-0 {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .pl-0 {
+        padding-left: 0 !important;
+    }
+
+    .pr-0 {
+        padding-right: 0 !important;
+    }
+
+    // ------------ End Style Grid Column Bootstrap ------------
+
+    // -------------- Style Flex Display --------------
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        display: -webkit-flex;
+        /* Safari */
+    }
+
+    .flex-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    i.tmss-fa {
+        font-size: 11px !important;
+        padding-right: 0 !important;
+    }
+
+    // -------------- End Style Flex Display --------------
+
+    // -------------- Style Display --------------
+    .inline {
+        display: inline-block;
+    }
+
+    // -------------- End Style Display --------------
+
+    // -------------- Common Control Style --------------
+    .input-group-text {
+        border-radius: 0;
+    }
+
+    .input-group-text.left-text {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0.65rem 0.5rem 0.65rem 0.6rem;
+        margin-bottom: 0;
+        font-size: inherit;
+        color: #000;
+        line-height: 1.5;
+        height: calc(1.5em + 1.3rem - 10px);
+        text-align: center;
+        white-space: nowrap;
+        background-color: #ccccccad !important;
+        border: 1px solid #ccc;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        border-right-width: 0px;
+    }
+
+    .input-group.text-right>.form-control.tmss-form-control {
+        text-align: right !important;
+        padding-right: 8px !important;
+    }
+
+    .input-group.text-left>.form-control.tmss-form-control {
+        text-align: left !important;
+        padding-left: 8px !important;
+    }
+
+    .tmss-form-control {
+        display: flex;
+        padding: 0.15rem 0.3rem;
+        font-size: inherit;
+        font-weight: 400;
+        color: #000;
+        line-height: 1.5;
+        height: calc(1.5em + 1.3rem - 10px);
+        background-color: #ffffff;
+        background-clip: padding-box;
+        -webkit-transition: border-color 0.15s ease-in-out,
+            -webkit-box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out,
+            -webkit-box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+            -webkit-box-shadow 0.15s ease-in-out;
+        border: 1px solid #ced4da;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+
+    }
+
+    .input-group-text.right-text {
+        border-left-width: 0;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        background-color: #ffffff;
+        border-color: #ced4da;
+        justify-content: center;
+        max-width: calc(1.5em + 1.3rem);
+        align-items: center;
+    }
+
+    .required {
+        background-color: rgb(255, 255, 204) !important;
+    }
+
+    .hide-input-control {
+        .input-group-text.left-text {
+            border-top-left-radius: 0px !important;
+            border-bottom-left-radius: 0px !important;
+        }
+    }
+
+    .remove-border-left-radius {
+        .input-group-text.left-text {
+            border-top-left-radius: 0px !important;
+            border-bottom-left-radius: 0px !important;
+        }
+    }
+
+    .remove-border-right-radius {
+        .tmss-form-control {
+            border-bottom-right-radius: 0px !important;
+            border-top-right-radius: 0px !important;
+        }
+    }
+
+    .hide-left-text {
+        .tmss-form-control {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+            padding: 0.15rem 0.4rem !important;
+        }
+    }
+
+    // -------------- End Common Control Style --------------
+
+    .tab-align-right ul.nav-tabs {
+        justify-content: flex-end;
+    }
+
+    ul.nav-tabs {
+        margin-bottom: 0px;
+    }
+
+    // ul.nav-tabs > li > a > span {
+    //   font-weight: bold;
+    //   color: #646c9a;
+    // }
+
+    // -------------- Tab In Fieldset Style --------------
+
+    .tmss-fieldset-tab .nav-tabs .nav-item .nav-link {
+        color: #212529;
+        background-color: #fff;
+        z-index: 1;
+        height: 2.25rem;
+        padding-top: 0.35rem;
+        position: relative;
+        top: -0.05rem;
+    }
+
+    .tab-container.tabbable-line.tmss-fieldset-tab {
+        width: 100%;
+    }
+
+    .tmss-fieldset-tab .nav-tabs .nav-item.active {
+        border: none;
+    }
+
+    .tmss-fieldset-tab .nav-tabs .nav-item .nav-link.active {
+        background-color: #c0c0dd;
+    }
+
+    .nav-tabs .nav-link {
+        border-radius: 0 !important;
+
+    }
+
+    h6.card-header {
+        padding: 0.4rem 1.25rem !important;
+        font-size: 1rem;
+        background-color: #fff;
+        color: #48465b;
+        font-weight: 500;
+    }
+
+    .bg-card-header {
+        background-color: #dee9fc !important;
+    }
+
+    .ui-multiselect .ui-multiselect-label {
+        display: flex;
+        max-width: 30rem;
+        min-width: 10rem;
+        cursor: pointer;
+        padding: 0 10rem .15em .25em !important;
+    }
+
+    .multi-select-control div {
+        max-width: 182px !important;
+    }
+
+    .ag-theme-alpine .ag-details-row {
+        padding-left: 10px !important;
+        padding-bottom: unset !important;
+        padding-top: unset !important;
+        padding-right: unset !important;
+    }
+
+    .ag-theme-alpine .ag-header-cell,
+    .ag-theme-alpine .ag-header-group-cell {
+        padding: 0 2px !important;
+    }
+
+    .kt-subheader--solid .kt-subheader{
+        min-height: unset !important;
+    }
+}

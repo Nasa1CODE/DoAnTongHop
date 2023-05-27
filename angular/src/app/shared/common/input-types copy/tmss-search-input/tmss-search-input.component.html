@@ -1,0 +1,29 @@
+<div class="input-group" [ngClass]="className ? className : ''">
+    <span class="input-group-text btn left-text" *ngIf="text" >{{ text }}<p *ngIf="isValidate" style="color: red; margin: 0.2rem 0 0.2rem 0.5rem;">*</p></span>
+    <input
+        type="text"
+        class="form-control tmss-form-control"
+        #input
+        [readonly]="isReadonly"
+        (keyup)="changeValue($event)"
+        [value]="value"
+        [disabled]="isDisabled ? true: null"
+        [class.required]="isRequired"
+        [class.disabled]="isDisabled"
+        [attr.placeholder]="placeholder"
+        (paste)="paste($event)"
+        [attr.maxlength]="maxLength ? maxLength : 999"
+    >
+
+    <span *ngIf="showSearch" class="input-group-text right-text button-search"
+        style="padding: 0px; width: 5%; border: 0.5px solid #7981dc; cursor: pointer;" (click)="btnSearch()"><i
+            class="fa tmss-fa fa-search" style="color: #5969e4;"></i>
+    </span>
+    <span *ngIf="showTrash" class="input-group-text right-text" (click)="refresh()"><i
+            class="tmss-fa far fa-trash-alt"></i></span>
+    <span *ngIf="showModal" (click)="onClickInputValue($event)" class="input-group-text right-text"><i
+            class="fa tmss-fa fas fa-external-link-alt"></i></span>
+    <span *ngIf="showPhone" class="button-phone input-group-text right-text" (click)="clickToCall()">
+        <i class="fa tmss-fa fa-phone"></i>
+        </span>
+</div>

@@ -18,8 +18,8 @@ namespace tmss.Sales.Invoice.Dto
     public class GetSalesInvoiceInput : PagedAndSortedResultRequestDto
     {
 
-     /*   public long? EmployeeId { get; set; }
-        public long? TableId { get; set; }*/
+        public long? EmployeeId { get; set; }
+        public long? TableId { get; set; }
         public string filterText { get; set; }
     }
 

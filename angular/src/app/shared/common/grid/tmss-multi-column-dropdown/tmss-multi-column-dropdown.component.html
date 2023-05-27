@@ -1,0 +1,38 @@
+<div class="multi-column-select" [ngClass]="className ? className : ''">
+  <div>
+    <!-- <span class="input-group-text"></span>
+    <div class="trigger-field form-control"
+         [class.required]="isRequired"
+         [class.disabled]="isDisabled"
+         (click)="isDisabled ? $event.stopPropagation() : isShowList = true"
+         [innerHtml]="selectedValue? selectedValue[displayField] : ''">
+    </div> -->
+
+    <tmss-text-input
+      [text]="text"
+      [isRequired]="isRequired"
+      [className]="'trigger-field'"
+      [isDisabled]="isDisabled"
+      [(ngModel)]="selectedValue[displayField]"
+      (click)="isDisabled ? $event.stopPropagation() : isShowList = true"
+      [showCaret]="true"
+      [isDisabled]="disableInput"
+    >
+    </tmss-text-input>
+  </div>
+
+  <div class="dropdown-list" *ngIf="isShowList">
+    <simple-ag-grid
+      [height]="height"
+      [columnDefs]="columnDefs"
+      [rowData]="list"
+      (onChangeSelection)="onChangeSelection($event)"
+      (callbackGrid)="callbackGrid($event)"
+      [showPagination]="false"
+      [defaultColDef]="defaultColDef"
+      [isSuppressHorizontalScroll]="true"
+      [enableFilter]="enableFilter"
+    >
+    </simple-ag-grid>
+  </div>
+</div>

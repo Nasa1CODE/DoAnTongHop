@@ -1,0 +1,11 @@
+<!-- <span ref="eCellWrapper" class="ag-cell-wrapper">
+    <span class="ag-selection-checkbox"> -->
+<!--<span class="ag-icon ag-icon-checkbox-checked ag-hidden"></span>-->
+<label class="ag-icon" [ngClass]="class">
+  <input type="checkbox" (change)="changeValue($event.currentTarget.checked)"
+    [checked]="(data && data.indexOf(value) === 0) || (!data && value===true) || (value == this.data[0] ? true:false)"
+    [disabled]="disableCheckbox">
+</label>
+<!-- </span>
+    <span ref="eCellValue" class="ag-cell-value"></span>
+  </span>  -->

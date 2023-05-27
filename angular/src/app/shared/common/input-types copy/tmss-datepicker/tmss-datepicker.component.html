@@ -1,0 +1,39 @@
+<!-- Tmss DatePicker -->
+<div class="input-group remove-border-right-radius" [ngClass]="className ? className : ''" style="position: relative;">
+  <span *ngIf="text" class="input-group-text left-text">{{ text }}<p *ngIf="isValidate" style="color: red; margin: 0.2rem 0 0.2rem 0.5rem;">*</p></span>
+  <input
+    type="text"
+    #input
+    #datepicker="bsDatepicker"
+    name="datePicker"
+    class="form-control tmss-form-control"
+    [class.required]="isRequired"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    [disabled]="isDisabled ? true : null"
+    bsDatepicker
+    datePickerMomentModifier
+    [bsConfig]="hasTimePicker ? { dateInputFormat: 'DD/MM/YYYY HH:mm' } : { dateInputFormat: dateInputFormat }"
+    [(date)]="value"
+    autocomplete="off"
+    [outsideClick]="!hasTimePicker"
+    [outsideEsc]="!hasTimePicker"
+    [placement]="placementDatePicker"
+    [minMode]="minMode"
+    (keydown)="keydown($event)"
+    (input)="inputChange($event)"
+    (dateChange)="bsValueChange($event)"
+    (onShown)="!isDisabled ? hideDatePicker($event) : undefined"
+    (onHidden)="hidden()"
+    [datesEnabled]="datesEnabled"
+
+    (focusout)="focusout()"
+    (click)="clickinput()"
+  />
+
+  <span class="input-group-text right-text" (click)="!isDisabled ? openDatePicker() : undefined"
+    [attr.aria-expanded]="datepicker.isOpen">
+    <i class="fa tmss-fa fa-calendar-alt"></i>
+  </span>
+</div>
+<!-- End Tmss DatePicker -->

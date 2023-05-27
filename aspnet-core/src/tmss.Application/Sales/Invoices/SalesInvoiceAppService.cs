@@ -34,7 +34,8 @@ namespace tmss.Salse.Invoices
         public async Task<PagedResultDto<SalesInvoiceForViewDto>> GetAll(GetSalesInvoiceInput input)
         {
             var query = from invoice in _salesInvoiceAppServiceRepo.GetAll()
-                      
+                        .Where(e => input.EmployeeId == null || e.EmployeeId == input.EmployeeId)
+                        .Where(e => input.TableId == null || e.TableId == input.TableId)
                         join o in _mstEmployeeAppServiceRepo.GetAll() on invoice.EmployeeId equals o.Id into invoices
                         from major in invoices.DefaultIfEmpty()
                         join o in _mstTableAppServiceRepo.GetAll() on invoice.TableId equals o.Id into tables

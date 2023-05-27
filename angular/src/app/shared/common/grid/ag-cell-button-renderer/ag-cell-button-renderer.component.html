@@ -1,0 +1,45 @@
+<div class="ui-g-12 ph-0" id="button-container">
+  <button
+    *ngIf="buttonDef"
+    type="button"
+    class="ag-in-cell-button"
+    (click)="customFunction()"
+    [ngStyle]="{ 'visibility':  visibleButton ? 'visible': 'hidden'}"
+    [title]="buttonDef.tooltip"
+    [disabled]="disableButton"
+    [buttonBusy]="buttonDef && buttonDef.busy"
+    [busyText]="'Đang xử lý'"
+    [ngClass]="buttonDefTwo ? 'ui-g-6 ph-0 ui-md-6 tmss-btn btn-outline-primary mr-1' : 
+               !buttonDefTwo && !buttonDef.className ? 'ui-g-12 ui-md-12 tmss-btn btn-outline-primary': 'ui-g-12 ui-md-12' + buttonDef.className ? buttonDef.className : 'tmss-btn btn-outline-primary'">
+    <i style="margin-right: 5px;" *ngIf="buttonDef.iconName" [class]="iconNameFunc + ' tmss-fa'"></i>
+    <span style="position: relative; top: -3px; margin-top: 5px;">{{ displayText }}</span>
+  </button>
+  <button
+    *ngIf="buttonDefTwo"
+    type="button"
+    class="ui-g-6 ph-0 ui-md-6 ag-in-cell-button"
+    [ngStyle]="{ 'visibility':  visibleButtonTwo ? 'visible': 'hidden'}"
+    [title]="buttonDefTwo.tooltip"
+    [ngClass]="buttonDefTwo.className ? buttonDefTwo.className : 'tmss-btn btn-outline-primary'"
+    (click)="customFunctionTwo()"
+    [busyText]="'Đang xử lý'"
+    [disabled]="disableButtonTwo"
+  >
+    <i *ngIf="buttonDefTwo.iconName" style="margin-right: 5px;" [class]="iconNameFuncTwo + ' tmss-fa'"></i>
+    <span style="position: relative; top: -3px; margin-top: 5px;">{{ buttonDefTwo.text }}</span>
+  </button>
+  <button
+    *ngIf="buttonDefThree"
+    type="button"
+    class="ui-g-6 ph-0 ui-md-6 ag-in-cell-button"
+    [ngStyle]="{ 'visibility':  visibleButtonThree ? 'visible': 'hidden'}"
+    [title]="buttonDefThree.tooltip"
+    [ngClass]="buttonDefThree.className ? buttonDefThree.className : 'tmss-btn btn-outline-primary'"
+    (click)="customFunctionThree()"
+    [busyText]="'Đang xử lý'"
+    [disabled]="disableButtonThree"
+  >
+    <i *ngIf="buttonDefThree.iconName" style="margin-right: 5px;" [class]="iconNameFuncThree + ' tmss-fa'"></i>
+    <span style="position: relative; top: -3px; margin-top: 5px;">{{ buttonDefThree.text }}</span>
+  </button>
+</div>

@@ -1,0 +1,38 @@
+<div class="input-group" [ngClass]="className ? className : ''">
+  <span class="input-group-text left-text" *ngIf="text">{{ text }}<p *ngIf="isValidate" style="color: red; margin: 0.2rem 0 0.2rem 0.5rem;">*</p></span>
+  <input
+    #input
+    [attr.type]="type"
+    class="form-control tmss-form-control"
+    [class.required]="isDisabled ? false : isRequired"
+    [readonly]="isReadonly"
+    [disabled]="isDisabled ? true : null"
+    *ngIf="!hideInput"
+    [attr.placeholder]="placeholder"
+    (input)="changeValue($event)"
+    (keyup)="openModal($event)"
+    [(ngModel)]="value"
+    [attr.min]="min"
+    [attr.max]="max"
+    [attr.maxlength]="maxLength ? maxLength : 999"
+  >
+  <span class="input-group-text textRight" *ngIf="textRight">{{ textRight }}</span>
+  <span *ngIf="showSearch" class="button-search input-group-text right-text hover-search" style="padding: 0px; width: 100%" (click)="search()">
+    <i class="fa tmss-fa fa-search"></i>
+  </span>
+  <span *ngIf="showCaret">
+    <i class="fa fa-angle-down"></i>
+  </span>
+  <span *ngIf="showModal" (click)="onClickInputValue($event)" class="input-group-text right-text">
+    <i class="fa tmss-fa fas fa-external-link-alt"></i>
+  </span>
+  <span *ngIf="showTrash" class="input-group-text right-text" (click)="refresh()">
+    <i class="tmss-fa far fa-trash-alt"></i>
+  </span>
+  <span *ngIf="showUpload" class="button-search input-group-text right-text" (click)="chooseFile()">
+    <i class="fa tmss-fa fa-file"></i>
+  </span>
+  <span *ngIf="showPhone" class="button-phone input-group-text right-text" (click)="clickToCall()">
+    <i class="fa tmss-fa fa-phone"></i>
+  </span>
+</div>

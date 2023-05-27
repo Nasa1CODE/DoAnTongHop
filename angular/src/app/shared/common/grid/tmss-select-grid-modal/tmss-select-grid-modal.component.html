@@ -1,0 +1,114 @@
+<div
+  *ngIf="!showBsModal"
+  class="modal fade"
+  appBsModal
+  #modal="bs-modal"
+  (onHidden)="reset()"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modal"
+  aria-hidden="true"
+  [config]="{ backdrop: 'static' }"
+>
+  <div class="modal-dialog" [ngClass]="modalClass ? modalClass : ''">
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="confirm()">
+      <div class="modal-content tmss-modal">
+        <div class="modal-header tmss-modal-header">
+          <h5 class="modal-title text-left">{{ headerText || '' }}</h5>
+          <button type="button" class="close" (click)="onCancelBtn()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <tmss-search-input class="remove-border-right-radius" *ngIf="showInput" [showSearch]="true" [text]="'Tìm kiếm'" name="inputSearch"
+            [(ngModel)]="value" (onSearch)="search($event)"></tmss-search-input>
+            <simple-ag-grid
+              [height]="showPagination ? '227px' : '300px'"
+              [columnDefs]="columnDefs"
+              [paginationParams]="paginationParams"
+              *ngIf="modal.isShown"
+              [rowData]="list"
+              [rowSelection]="rowSelection"
+              [showPagination]="showPagination"
+              (changePaginationParams)="changePaginationParams($event)"
+              [defaultColDef]="defaultColDef"
+              [enableFilter]="enableFilter"
+              (callBackEvent)="callBackGrid($event)"
+              (cellDoubleClicked)="confirm($event)"
+              (keydown)="enterEvent($event)"
+              (filterChanged)="onFilterChanged($event)"
+              (onChangeSelection)="onChangeSelection()">
+        </simple-ag-grid>
+        <div class="ui-g-12 text-left pt-1" style="font-size: 12px;font-weight:500" *ngIf="isShowRowNum" >
+            <span>Tổng số dữ liệu : {{totalCount}}</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="tmss-btn tmss-footer-btn btn-outline-primary" [disabled]="!selectedData || isDisableSave"
+             *ngIf="!hideSaveButton">
+            <i class="fa tmss-fa fa-check"></i> {{textLeft}}
+          </button>
+          <button type="button" class="tmss-btn tmss-footer-btn btn-outline-primary" (click)="onCancelBtn()"
+            *ngIf="!hideCancelButton">
+            <i class="fa tmss-fa fa-times"></i> {{textRight}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="showBsModal" class="modal fade" bsModal #modal="bs-modal" (onHidden)="reset()"
+  tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" [config]="{ backdrop: 'static' }"
+  >
+  <div class="modal-dialog tmss-modal-sm" [ngClass]="modalClass ? modalClass : ''">
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="confirm()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-left">{{headerText || ''}}</h5>
+          <button type="button" class="close" (click)="onCancelBtn()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <tmss-search-input class="remove-border-right-radius" *ngIf="showInput" [showSearch]="true" [text]="'Tìm kiếm'" name="inputSearch"
+            [(ngModel)]="value" (onSearch)="search($event)"></tmss-search-input>
+
+          <div class="panel panel-default pt-1">
+            <simple-ag-grid
+              [height]="'310px'"
+              [columnDefs]="columnDefs"
+              [paginationParams]="paginationParams"
+              *ngIf="modal.isShown"
+              [rowData]="list"
+              [enableFilter]="enableFilter"
+              [rowSelection]="rowSelection"
+              [showPagination]="showPagination"
+              (changePaginationParams)="changePaginationParams($event)"
+              [defaultColDef]="defaultColDef"
+              (callBackEvent)="callBackGrid($event)"
+              (cellDoubleClicked)="confirm($event)"
+              (keydown)="enterEvent($event)"
+              (filterChanged)="onFilterChanged($event)"
+              (onChangeSelection)="onChangeSelection()">
+            </simple-ag-grid>
+          </div>
+          <div class="ui-g-12 text-left pt-1" style="font-size: 12px;font-weight:500" *ngIf="isShowRowNum" >
+            <span>Tổng số dữ liệu : {{totalCount}}</span>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+          <button type="submit" class="tmss-btn tmss-footer-btn btn-outline-primary"  [disabled]="!selectedData || isDisableSave" *ngIf="!hideSaveButton">
+            <i class="fa tmss-fa fa-check"></i> {{textLeft}}
+          </button>
+          <button type="button" class="tmss-btn tmss-footer-btn btn-outline-primary" (click)="onCancelBtn()"
+            *ngIf="!hideCancelButton">
+            <i class="fa tmss-fa fa-times"></i> {{textRight}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

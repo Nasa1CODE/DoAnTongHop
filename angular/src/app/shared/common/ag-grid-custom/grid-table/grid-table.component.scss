@@ -1,0 +1,94 @@
+@import "../../../../../../node_modules/@ag-grid-enterprise/all-modules/dist/styles/ag-grid.scss";
+@import "../../../../../../node_modules/@ag-grid-enterprise/all-modules/dist/styles/ag-theme-alpine.min.css";
+
+.ag-theme-alpine {
+    font-family: 'Roboto' !important;
+    font-weight: 450;
+    color: #000;
+}
+
+
+.ag-theme-alpine .ag-header {
+    height: 20px;
+    min-height: 20px;
+}
+
+.ag-theme-alpine .ag-row {
+    height: 20px;
+    min-height: 20px;
+    color: #000;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell {
+    height: 20px;
+    line-height: unset;
+    border-right: 1px solid #80808026;
+}
+
+.ag-theme-alpine .ag-header-row {
+    height: 20px;
+}
+
+.ag-theme-alpine .ag-row-odd {
+    background-color: #e7f6ff;
+}
+
+.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+    background-color: #dee9fc !important;
+    font-weight: 600;
+    border-bottom: 2px solid #ebedf2;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell{
+    display: flex;
+    align-items: center;
+}
+
+.ag-theme-alpine .ag-cell-wrapper > *:not(.ag-cell-value):not(.ag-group-value) {
+    height: 20px;
+}
+
+.ag-row-group {
+    line-height: 20px;
+}
+
+.ag-header-group-cell-label, .ag-header-cell-label {
+    justify-content: center;
+}
+
+.ag-theme-alpine .ag-header-cell {
+    text-align: center !important;
+}
+
+.ag-row-selected {
+    background-color: #008eff42 !important;
+}
+
+.ag-cell, .ag-header-cell {
+    font-size: 0.9rem !important;
+}
+
+.ag-cell-focus {
+    border: 1px solid #2196f3;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell.ag-cell-range-selected {
+    border-right: 1px solid #2196f3;
+    border-bottom: 1px solid #2196f3;
+}
+
+.ag-cell.ag-cell-auto-height.cell-clickable.ag-cell-inline-editing {
+    padding: 0 !important;
+}
+
+.ag-theme-alpine .ag-ltr .ag-group-expanded, .ag-theme-alpine .ag-ltr .ag-row-drag, .ag-theme-alpine .ag-ltr .ag-selection-checkbox {
+    margin-right: unset;
+}
+
+.ag-header-cell.ag-focus-managed:not(.ag-header-cell-sortable) {
+    padding: 0px 2px 0px 2px !important;
+}
+
+.ag-theme-alpine .ag-cell {
+    padding: 1px 10px 1px 10px;
+}

@@ -1,9 +1,13 @@
-<!-- <ag-grid-angular
+<ag-grid-angular
     #agGrid
     [ngStyle]="style"
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
     [ngClass]="className ? className : wrapText ? 'grid-wrap-text' : ''"
+    [masterDetail]="masterDetail"
+    [detailCellRenderer]="detailCellRenderer"
+    [detailCellRendererFramework]="detailCellRendererFramework"
+    (firstDataRendered)="firstDataRenderedEvent($event)"
     [modules]="modules"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
@@ -24,7 +28,7 @@
     [getRowStyle]="getRowStyle"
     [autoGroupColumnDef]="autoGroupColumnDef"
     [groupDefaultExpanded]="groupDefaultExpanded"
-    [enableRangeSelection]="true"
+    [enableRangeSelection]="enableRangeSelection"
     [suppressPropertyNamesCheck]="true"
     [rowSelection]="rowSelection"
     [animateRows]="false"
@@ -35,13 +39,14 @@
     [navigateToNextCell]="navigateToNextCell"
     [frameworkComponents]="frameworkComponents"
     [suppressRowClickSelection]="isSuppressRowClickSelection"
-    [stopEditingWhenGridLosesFocus]="true"
-    [detailRowHeight]="detailRowHeight"
-    [masterDetail]="masterDetail"
-    [detailCellRendererParams]="detailCellRendererParams"
-    [sideBar] = "sideBar"
-    [groupIncludeTotalFooter]="groupIncludeTotalFooter"
-    [getContextMenuItems]="getContextMenuItems">
+    [getContextMenuItems]="getContextMenuItems"
+    (rowSelected)="onRowSelected($event)"
+    [suppressLastEmptyLineOnPaste]="isSuppressLastEmptyLineOnPaste"
+    [suppressCellSelection]="isSuppressCellSelection"
+    [sideBar]="sideBar"
+    (filterChanged)="onFilterChanged($event)"
+    (columnResized)="onColumnResized($event)"
+    >
 </ag-grid-angular>
 <grid-pagination
     *ngIf="showPagination"
@@ -50,4 +55,4 @@
     (pageChangedEvent)="changePage($event)"
     [textPagination]="textPagination"
     [allowToGetMultiRecords]="allowToGetMultiRecords">
-</grid-pagination> -->
+</grid-pagination>

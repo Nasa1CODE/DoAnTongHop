@@ -16,9 +16,9 @@
   },
   "private": false,
   "dependencies": {
-    "@ag-grid-community/angular": "25.0.0",
-    "@ag-grid-community/client-side-row-model": "^29.3.5",
-    "@ag-grid-enterprise/all-modules": "25.0.0",
+    "@ag-grid-community/angular": "^25.0.0",
+    "@ag-grid-enterprise/all-modules": "^25.0.0",
+    "@angular-material-extensions/faq": "^3.0.4",
     "@angular/animations": "^9.1.0",
     "@angular/cdk": "9.2.0",
     "@angular/common": "^9.1.0",

@@ -1,0 +1,29 @@
+.page-container {
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.record-container {
+    float: left;
+    padding: 4px 0;
+}
+
+.nav-container {
+    float: right;
+}
+
+.btn {
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+// .btn:hover {
+//     background-color: rgb(145, 152, 172);
+// }
+
+.clearfix {
+    overflow: hidden;
+}

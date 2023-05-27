@@ -9820,14 +9820,20 @@ export class SalesInvoiceServiceProxy {
     }
 
     /**
+     * @param employeeId (optional) 
+     * @param tableId (optional) 
      * @param filterText (optional) 
      * @param sorting (optional) 
      * @param skipCount (optional) 
      * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(filterText: string | null | undefined, sorting: string | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<PagedResultDtoOfSalesInvoiceForViewDto> {
+    getAll(employeeId: number | null | undefined, tableId: number | null | undefined, filterText: string | null | undefined, sorting: string | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<PagedResultDtoOfSalesInvoiceForViewDto> {
         let url_ = this.baseUrl + "/api/services/app/SalesInvoice/GetAll?";
+        if (employeeId !== undefined)
+            url_ += "EmployeeId=" + encodeURIComponent("" + employeeId) + "&"; 
+        if (tableId !== undefined)
+            url_ += "TableId=" + encodeURIComponent("" + tableId) + "&"; 
         if (filterText !== undefined)
             url_ += "filterText=" + encodeURIComponent("" + filterText) + "&"; 
         if (sorting !== undefined)
@@ -9884,6 +9890,116 @@ export class SalesInvoiceServiceProxy {
             }));
         }
         return _observableOf<PagedResultDtoOfSalesInvoiceForViewDto>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getListTable(): Observable<GetListTable[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalesInvoice/GetListTable";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetListTable(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetListTable(<any>response_);
+                } catch (e) {
+                    return <Observable<GetListTable[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<GetListTable[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetListTable(response: HttpResponseBase): Observable<GetListTable[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(GetListTable.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<GetListTable[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getListEmployee(): Observable<GetListEmployee[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalesInvoice/GetListEmployee";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetListEmployee(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetListEmployee(<any>response_);
+                } catch (e) {
+                    return <Observable<GetListEmployee[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<GetListEmployee[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetListEmployee(response: HttpResponseBase): Observable<GetListEmployee[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(GetListEmployee.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<GetListEmployee[]>(<any>null);
     }
 }
 
@@ -23501,6 +23617,86 @@ export class PagedResultDtoOfSalesInvoiceForViewDto implements IPagedResultDtoOf
 export interface IPagedResultDtoOfSalesInvoiceForViewDto {
     totalCount: number;
     items: SalesInvoiceForViewDto[] | undefined;
+}
+
+export class GetListTable implements IGetListTable {
+    id!: number | undefined;
+    tableName!: string | undefined;
+
+    constructor(data?: IGetListTable) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.tableName = _data["tableName"];
+        }
+    }
+
+    static fromJS(data: any): GetListTable {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetListTable();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["tableName"] = this.tableName;
+        return data; 
+    }
+}
+
+export interface IGetListTable {
+    id: number | undefined;
+    tableName: string | undefined;
+}
+
+export class GetListEmployee implements IGetListEmployee {
+    id!: number | undefined;
+    employeeName!: string | undefined;
+
+    constructor(data?: IGetListEmployee) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.employeeName = _data["employeeName"];
+        }
+    }
+
+    static fromJS(data: any): GetListEmployee {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetListEmployee();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["employeeName"] = this.employeeName;
+        return data; 
+    }
+}
+
+export interface IGetListEmployee {
+    id: number | undefined;
+    employeeName: string | undefined;
 }
 
 export class UserLoginInfoDto implements IUserLoginInfoDto {

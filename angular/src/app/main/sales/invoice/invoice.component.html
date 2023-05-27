@@ -1,146 +1,78 @@
-<div id="container" class="mt-2" >
-    <div class="ui-g-12">
-        <fieldset class="fieldset-border grid-parent">
-            <div class="ui-g-12">
-                <div class="card-header">
+<div id="container" style="overflow: hidden; padding-left: 0.5rem; padding-right: 0.5rem; padding-top: 1.5rem;" [busyIf]="isLoading">
+    <div class="ui-g-12 ph-0">
+        <div class="ui-g-12 ph-0">
+                 <!-- SEARCH CONDITION -->
+            <fieldset class="fieldset-border ui-g-12  pr-1">
+                <div class="ui-g-12 ph-0 search">
                     <div class="row">
-                      <div class="col-6">
-                        <h2 class="text-uppercase">DANH SÁCH HÓA ĐƠN</h2>
-                      </div>
-                    </div>
-                  </div>
-                <div class="prod-cont">
-                    <div class="ui-g-12">
-                        <div class="form-group m-form__group align-items-center">
-                            <div class="input-group color-size">
-                            
-                                <!-- <div class='input-search'>
-									<input  name='ingredientNameFilter' [(ngModel)]="ingredientNameFilter"
-									class='form-control' [placeholder]="l('IngredientName')"
-									type='text' (keyup.enter)='searchDatas()'>
-								</div>
-                                <div class='input-search'>
-									<input  name='unitIngredientFilter' [(ngModel)]="unitIngredientFilter"
-									class='form-control' [placeholder]="l('UnitIngredient')"
-									type='text' (keyup.enter)='searchDatas()'>
-								</div>
-                                <div class="btn-search">
-                                    <button (click)="searchDatas()"
-                                        class="btn btn-primary" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                                <div class="btn-search">
-                                    <button (click)="clearTextSearch()"
-                                        class="btn btn-primary" type="submit">
-                                        <i class="fas fa-backspace"></i>
-                                    </button>
-                                </div> -->
+                        <div class="col-3">
+                            <div class="form-group">
+                                <tmss-combobox [items]="listEmployeeType" [text]="l('Employee')"
+                                    [type]="'number'" [(ngModel)]="EmployeeId"
+                                ></tmss-combobox>
                             </div>
                         </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <tmss-combobox [items]="listTableType" [text]="l('Table')"
+                                    [type]="'number'" [(ngModel)]="TableId"
+                                ></tmss-combobox>
+                            </div>
+                        </div>
+                        <div class="col-3 text-right">
+                            <button type="button" class="tmss-btn btn-outline-primary" (click)="clearTextSearch()"
+                              >
+                                <i class="tmss-fa fas fa-redo mr-1"></i>{{l("Refresh")}}
+                            </button>
+                            <button class="tmss-btn btn-outline-primary mr-0" type="button" (click)="search()">
+                                <i class="tmss-fa fa fa-search mr-1"></i>{{l("Search")}}
+                            </button>
+                        </div>
                     </div>
-                    <div class="ui-g-12 ui-md-12">
-            
-                        <form autocomplete="on">
+                    
+                </div>
+            </fieldset>
+                <!-- END SEARCH -->
+                <div class="ui-g-12 ph-0">
+                    <div class="ui-g-12 pr-1">
+                        <span>
+                            <h6 class="card-header bg-card-header card-header-input pr-1">
+                                {{ 'WIFI DEVICE MANAGEMENT' }}
+                            </h6>
+                        </span>
+                    </div>
+                    
+                    <fieldset class="fieldset-border ui-g-12 ">
                         <div class="panel panel-default pt-1">
-                            <ag-grid-community 
-                            style="width: 500px; height: 500px;" 
-                            class="ag-theme-balham"
-                            [rowData]="rowData_test" 
-                            [columnDefs]="columnDefs">
-                            [modules]="modules"
-                            </ag-grid-community>
-                                <!-- <p-table [value]="rowData" [tableStyle]="{ 'min-width': '30rem' }"  [paginator]="true" [rows]="7"  selectionMode="single"
-                               dataKey=""  (onRowSelect)="onRowSelect($event)" 
-                                [showCurrentPageReport]="true" currentPageReporgtTemplate="Showing {first} to {last} of {totalRecords} entries"
-                                [rowsPerPageOptions]="[10, 25, 50]">
-                                <ng-template pTemplate="header"  >
-                                    <tr>
-                                        <th class="small-index">STT</th>
-                                        <th>{{ l("EmployeeName") }}</th>
-                                        <th>{{ l("TableName") }}</th>
-                                        <th>{{ l("TimeIn") }}</th>
-                                        <th>{{ l("TimeOut") }}</th>
-                                        <th>{{ l("Status") }}</th>
-                                    </tr>
-                                </ng-template>
-                                <ng-template pTemplate="body" let-rowData  let-rowIndex="rowIndex" >
-                                    <tr [pSelectableRow]="rowData">
-                                        <td class="small-index">{{rowIndex + 1}}</td>
-                                        <td>{{rowData.employeeName}}</td>
-                                        <td>{{ rowData.tableName }}</td>
-                                        <td >{{ rowData.timeIn }}</td>
-                                        <td>{{ rowData.timeOut }}</td>
-                                        <td>{{ rowData.status }}</td>
-                                    </tr>
-                                    <tr id="{{'child_' + rowData.id}}" style="display: none;">
-                                        <td colspan="8" class="p-0">
-                                          <table class="table table-hover table-bordered table-sm mb-0 ">
-                                            <thead class="table-primary text-center text-uppercase">
-                            
-                                              <th scope="col">#</th>
-                                              <th scope="col">Tên Món Ăn</th>
-                                              <th scope="col">Hình ảnh</th>
-                                              <th scope="col">Số lượng</th>
-                                              <th scope="col">Đơn Giá </th>
-                                              <th scope="col">Ghi Chú</th>                  
-                                            </thead>
-                                            <!-- <ng-container *ngFor="let CtHoaDon of ctHoaDonList; let i = index">
-                                              <ng-container *ngIf="CtHoaDon.HoaDon_ID == HoaDon.HoaDon_ID">
-                                                <tbody class="text-center">
-                                                  <tr (click)="hide(CtHoaDon.HoaDon_ID)">
-                                                    <th>{{i+1}}</th>
-                                                    <td>{{CtHoaDon.MonAn_Ten}}</td>
-                                                    <td><img src="../../../assets/img/course/{{CtHoaDon.MonAn_HinhAnh}}" alt="food"
-                                                        style="width: 60px; height: 60px;"> </td>
-                                                    <td>{{CtHoaDon.ChiTietHD_SoLuong}}</td>
-                                                    <td>{{CtHoaDon.ChiTietHD_DonGia | number:'1.0' }} VND</td>
-                                                    <td>{{CtHoaDon.ChiTietHD_GhiChu}}</td>                       
-                                                  </tr>
-                                                </tbody>
-                                              </ng-container>
-                                            </ng-container> 
-                                          </table>
-                                        </td>
-                                      </tr>
-                                </ng-template>
-                                <ng-template pTemplate="paginatorleft">
-                                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-                                </ng-template>
-                                <ng-template pTemplate="paginatorright">
-                                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
-                                </ng-template>
-                                </p-table> -->
-
+                            <simple-ag-grid
+                                [paginationParams]="paginationParams"
+                                [columnDefs]="defaultColDefs"
+                                [defaultColDef]="defaultColDef"
+                                [rowData]="rowData"
+                                (callBackEvent)="callBackOracleInvoiceBatchNameGrid($event)"
+                                (onChangeSelection)="onChangeSelection($event)"
+                                (changePaginationParams)="changePage($event)"
+                                [height]="'60vh'"
+                                [wrapText]="true"
+                                [frameworkComponents]="frameworkComponents">
+                            </simple-ag-grid>
                         </div>
-                        </form>
-                        <hr>
-                 
-                        <div class="text-right">
-                        	<div>
-                                <button class="btn btn-success font-weight-bold" id="exportToExcel" (click)="exportToExcel()">
-                                    <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
-                                </button>
-
-                            <!-- <button class="btn btn-info font-weight-bold" (click)="createIngredient()">
-                                <i class="fa fa-plus mr-1"></i>{{ l('Add') }}
-                            </button>
-
-                            <button class="btn btn-warning font-weight-bold" (click)="editIngredient()">
-                                <i class="far fa-edit mr-1"></i>{{'Edit'}}
-                            </button>
-
-                            <button class="btn btn-primary font-weight-bold" (click)="deleteRow(selectedRow)">
-                                <i class="fas fa-trash-alt mr-1"></i>{{'Delete'}}
-                            </button> -->
-                        </div>
-                        <div class="lds-hourglass"></div>
-                        </div>
+                    </fieldset>
+                    <div class="text-right pr-1">
+                        <button
+                            class="tmss-btn tmss-footer-btn btn-outline-primary" >
+                            <i class="fa tmss-fa fa-plus mr-1"></i>{{ 'Thêm' }}
+                        </button>
+                        <button
+                            class="tmss-btn tmss-footer-btn btn-outline-primary" >
+                            <i class="fa tmss-fa fa-plus mr-1"></i>{{ 'Thêm' }}
+                        </button>
                     </div>
                 </div>
-            </div>
-        </fieldset>
+        </div>
     </div>
 </div>
+
+
 
 

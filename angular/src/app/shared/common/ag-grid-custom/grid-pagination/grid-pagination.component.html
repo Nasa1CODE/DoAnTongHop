@@ -1,0 +1,72 @@
+<!-- <div class="page-container"> -->
+<!-- <div class="primeng-paging-container" style="margin: 1%;"> -->
+<div class="primeng-paging-container">
+    <!-- <div
+    ng-reflect-ng-class="ui-paginator ui-widget ui-widg"
+    class="ui-paginator ui-widget ui-widget-header ui-unselectable-text ui-helper-clearfix ng-star-inserted"
+> -->
+    <!-- <div class="ui-paginator"> -->
+    <div class="clearfix">
+        <div class="record-container">
+            <span class="total-records-count">
+                {{ fromRecord }} {{ l("đến") }} {{ toRecord }} {{textPagination}}
+                {{ paginationParams.totalCount }}
+            </span>
+        </div>
+        <div class="nav-container">
+            <span>
+                <button
+                    type="button"
+                    class="btn"
+                    (click)="goToPage(1)"
+                    [disabled]="paginationParams.pageNum === 1 || paginationParams.pageNum === 0"
+                >
+                    <i class="pi pi-step-backward"></i>
+                </button>
+
+                <button
+                    type="button"
+                    class="btn"
+                    (click)="goToPrevious()"
+                    [disabled]="paginationParams.pageNum === 1 || paginationParams.pageNum === 0"
+                >
+                    <i class="pi pi-caret-left"></i>
+                </button>
+                <span>
+                    Trang {{ this.paginationParams.totalCount / this.pageSize === 0 ? 0 : paginationParams.pageNum }} /
+                    {{ paginationParams.totalPage }}
+                </span>
+            <button type="button" class="btn" (click)="goToNext()" [disabled]="
+                        paginationParams.pageNum ===
+                        this.paginationParams.totalPage
+                    ">
+                    <i class="pi pi-caret-right"></i>
+                </button>
+            <button type="button" class="btn" (click)="goToPage(this.paginationParams.totalPage)" [disabled]="
+                        paginationParams.pageNum ===
+                        this.paginationParams.totalPage
+                    ">
+                    <i class="pi pi-step-forward"></i>
+                </button>
+
+            <span class="total-records-count ml-1">Hiển thị  </span>
+            <!-- <p-dropdown
+                (ngModelChange)="onPageSizeChanged()"
+                [(ngModel)]="pageSize"
+                [options]="pageOptions"
+            ></p-dropdown> -->
+            <select (change)="onPageSizeChanged()" [(ngModel)]="pageSize">
+                    <option value="10" selected="">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                    <option *ngIf="allowToGetMultiRecords" value="1000">1000</option>
+                    <option *ngIf="allowToGetMultiRecords" value="5000">5000</option>
+                    <option *ngIf="allowToGetMultiRecords" value="10000">10000</option>
+                </select>
+            </span>
+        </div>
+    </div>
+</div>
