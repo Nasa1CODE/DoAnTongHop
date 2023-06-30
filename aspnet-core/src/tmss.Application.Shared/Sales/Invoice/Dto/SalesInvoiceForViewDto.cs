@@ -20,13 +20,14 @@ namespace tmss.Sales.Invoice.Dto
 
         public long? EmployeeId { get; set; }
         public long? TableId { get; set; }
-        public string filterText { get; set; }
     }
 
     public class GetListTable
     {
         public long? Id { get; set; }
         public string TableName { get; set; }
+        
+
     }
 
     public class GetListEmployee
@@ -34,5 +35,7 @@ namespace tmss.Sales.Invoice.Dto
         public long? Id { get; set; }
         public string EmployeeName { get; set; }
     }
+
+
 
 }

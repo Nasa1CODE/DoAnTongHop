@@ -9822,20 +9822,17 @@ export class SalesInvoiceServiceProxy {
     /**
      * @param employeeId (optional) 
      * @param tableId (optional) 
-     * @param filterText (optional) 
      * @param sorting (optional) 
      * @param skipCount (optional) 
      * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(employeeId: number | null | undefined, tableId: number | null | undefined, filterText: string | null | undefined, sorting: string | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<PagedResultDtoOfSalesInvoiceForViewDto> {
+    getAll(employeeId: number | null | undefined, tableId: number | null | undefined, sorting: string | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<PagedResultDtoOfSalesInvoiceForViewDto> {
         let url_ = this.baseUrl + "/api/services/app/SalesInvoice/GetAll?";
         if (employeeId !== undefined)
             url_ += "EmployeeId=" + encodeURIComponent("" + employeeId) + "&"; 
         if (tableId !== undefined)
             url_ += "TableId=" + encodeURIComponent("" + tableId) + "&"; 
-        if (filterText !== undefined)
-            url_ += "filterText=" + encodeURIComponent("" + filterText) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (skipCount === null)
@@ -10000,6 +9997,200 @@ export class SalesInvoiceServiceProxy {
             }));
         }
         return _observableOf<GetListEmployee[]>(<any>null);
+    }
+}
+
+@Injectable()
+export class SalesOrderInvoiceServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @param tableId (optional) 
+     * @return Success
+     */
+    getDistList(tableId: number | undefined): Observable<MstDishListDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalesOrderInvoice/GetDistList?";
+        if (tableId === null)
+            throw new Error("The parameter 'tableId' cannot be null.");
+        else if (tableId !== undefined)
+            url_ += "TableId=" + encodeURIComponent("" + tableId) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDistList(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDistList(<any>response_);
+                } catch (e) {
+                    return <Observable<MstDishListDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<MstDishListDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDistList(response: HttpResponseBase): Observable<MstDishListDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(MstDishListDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<MstDishListDto[]>(<any>null);
+    }
+
+    /**
+     * @param tableId (optional) 
+     * @param sorting (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAllDishDetail(tableId: number | null | undefined, sorting: string | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<PagedResultDtoOfMstDishDetailDto> {
+        let url_ = this.baseUrl + "/api/services/app/SalesOrderInvoice/GetAllDishDetail?";
+        if (tableId !== undefined)
+            url_ += "TableId=" + encodeURIComponent("" + tableId) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllDishDetail(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllDishDetail(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfMstDishDetailDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfMstDishDetailDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllDishDetail(response: HttpResponseBase): Observable<PagedResultDtoOfMstDishDetailDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = PagedResultDtoOfMstDishDetailDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfMstDishDetailDto>(<any>null);
+    }
+
+    /**
+     * @param listDishId (optional) 
+     * @param tableId (optional) 
+     * @return Success
+     */
+    createOrEditDishTable(listDishId: string | null | undefined, tableId: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalesOrderInvoice/CreateOrEditDishTable?";
+        if (listDishId !== undefined)
+            url_ += "ListDishId=" + encodeURIComponent("" + listDishId) + "&"; 
+        if (tableId === null)
+            throw new Error("The parameter 'tableId' cannot be null.");
+        else if (tableId !== undefined)
+            url_ += "TableId=" + encodeURIComponent("" + tableId) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditDishTable(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditDishTable(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditDishTable(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
     }
 }
 
@@ -23697,6 +23888,162 @@ export class GetListEmployee implements IGetListEmployee {
 export interface IGetListEmployee {
     id: number | undefined;
     employeeName: string | undefined;
+}
+
+export class MstDishListDto implements IMstDishListDto {
+    id!: number | undefined;
+    tableId!: number | undefined;
+    dishName!: string | undefined;
+    tableName!: string | undefined;
+    checks!: boolean;
+
+    constructor(data?: IMstDishListDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.tableId = _data["tableId"];
+            this.dishName = _data["dishName"];
+            this.tableName = _data["tableName"];
+            this.checks = _data["checks"];
+        }
+    }
+
+    static fromJS(data: any): MstDishListDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new MstDishListDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["tableId"] = this.tableId;
+        data["dishName"] = this.dishName;
+        data["tableName"] = this.tableName;
+        data["checks"] = this.checks;
+        return data; 
+    }
+}
+
+export interface IMstDishListDto {
+    id: number | undefined;
+    tableId: number | undefined;
+    dishName: string | undefined;
+    tableName: string | undefined;
+    checks: boolean;
+}
+
+export class MstDishDetailDto implements IMstDishDetailDto {
+    dishName!: string | undefined;
+    dishType!: string | undefined;
+    unitDish!: string | undefined;
+    statusDish!: string | undefined;
+    price!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IMstDishDetailDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.dishName = _data["dishName"];
+            this.dishType = _data["dishType"];
+            this.unitDish = _data["unitDish"];
+            this.statusDish = _data["statusDish"];
+            this.price = _data["price"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): MstDishDetailDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new MstDishDetailDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["dishName"] = this.dishName;
+        data["dishType"] = this.dishType;
+        data["unitDish"] = this.unitDish;
+        data["statusDish"] = this.statusDish;
+        data["price"] = this.price;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IMstDishDetailDto {
+    dishName: string | undefined;
+    dishType: string | undefined;
+    unitDish: string | undefined;
+    statusDish: string | undefined;
+    price: string | undefined;
+    id: number | undefined;
+}
+
+export class PagedResultDtoOfMstDishDetailDto implements IPagedResultDtoOfMstDishDetailDto {
+    totalCount!: number;
+    items!: MstDishDetailDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfMstDishDetailDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.totalCount = _data["totalCount"];
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(MstDishDetailDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfMstDishDetailDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfMstDishDetailDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfMstDishDetailDto {
+    totalCount: number;
+    items: MstDishDetailDto[] | undefined;
 }
 
 export class UserLoginInfoDto implements IUserLoginInfoDto {

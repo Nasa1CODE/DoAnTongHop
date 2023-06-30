@@ -35,6 +35,11 @@ import { RouterModule } from '@angular/router';
                         loadChildren: () => import('./sales/invoice/invoice.module').then(m => m.InvoiceModule),
                         
                     },
+                    {
+                        path: 'sales/order',
+                        loadChildren: () => import('./sales/order/order.module').then(m => m.OrderModule),
+                        
+                    },
                     { path: '**', redirectTo: 'dashboard' },
                     
                 ],

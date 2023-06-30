@@ -321,7 +321,7 @@ constructor(
             let num = 0;
             this.gridTableService.selectFirstRow(this.params?.api);
             if (this.params && this.params.api && this.modal.isShown)
-                this.params.api?.forEachLeafNode(e => { if (e.displayed) num++; });
+                //this.params.api?.forEachLeafNode(e => { if (e.displayed) num++; });
             this.totalCount = num ;
             if (num == 0 ) this.isDisableSave = true ;
             else this.isDisableSave = false ;

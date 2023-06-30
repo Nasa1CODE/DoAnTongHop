@@ -51,6 +51,7 @@ namespace tmss.EntityFrameworkCore
         public virtual DbSet<MstEmployeeAppService> MstEmployeeAppServices { get; set; }
         public virtual DbSet<MstIngredientcAppService> MstIngredientcAppServices { get; set; }  
         public virtual DbSet<SalesInvoiceAppService> SalesInvoiceAppServices { get; set; }
+        public virtual DbSet<SalesInvoiceDetailsAppService> SalesInvoiceDetailsAppServices { get; set; }
 
         public tmssDbContext(DbContextOptions<tmssDbContext> options)
             : base(options)

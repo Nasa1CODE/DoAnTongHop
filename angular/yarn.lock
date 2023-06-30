@@ -12,19 +12,12 @@
     "@ag-grid-community/csv-export" "~25.0.0"
     "@ag-grid-community/infinite-row-model" "~25.0.0"
 
-"@ag-grid-community/angular@25.0.0":
+"@ag-grid-community/angular@^25.0.0":
   "integrity" "sha512-mQyurO49Q62JzwfVNphiwdmZwiOaThIJDEVAzK5Tkybik6qUAdO077l/IZUMf+iIt8NDWJhehtwtgVenpMAtqg=="
   "resolved" "https://registry.npmjs.org/@ag-grid-community/angular/-/angular-25.0.0.tgz"
   "version" "25.0.0"
   dependencies:
     "tslib" "^1.10.0"
-
-"@ag-grid-community/client-side-row-model@^29.3.5":
-  "integrity" "sha512-+uA28LTAummyYdZbEDys+cTECPn1Po1f6vX9QZOK9gpZdNzSpGjd3Vc1SKR/2brR6XMGlPeSRsX+FPZmG9uvHQ=="
-  "resolved" "https://registry.npmjs.org/@ag-grid-community/client-side-row-model/-/client-side-row-model-29.3.5.tgz"
-  "version" "29.3.5"
-  dependencies:
-    "@ag-grid-community/core" "~29.3.5"
 
 "@ag-grid-community/client-side-row-model@~25.0.0":
   "integrity" "sha512-IUrFnXQu4+V/CDzd4XckWoCpjD/y80BmWwJys9xqYdSeeW3SVBJ191m4P5iu0y2pTM+5boxrwoONFI+m7MGGzw=="
@@ -37,11 +30,6 @@
   "integrity" "sha512-dvDFM+/qsnGdTtNLp0mYlSZRUMGItKXbfUMnboCQXmRc/RZkssiiqLrZCTrOK9svfSh1Ayzv3+QSbGsEh7TyZA=="
   "resolved" "https://registry.npmjs.org/@ag-grid-community/core/-/core-25.0.1.tgz"
   "version" "25.0.1"
-
-"@ag-grid-community/core@~29.3.5":
-  "integrity" "sha512-r86bOCscnKVtaYyKqlN2UCtfbjf4UcmxHfVuXzJ94iN8Jy3iiQVrbQnbNArnjR589Bt/1VR/m+SdAMsOLcdpag=="
-  "resolved" "https://registry.npmjs.org/@ag-grid-community/core/-/core-29.3.5.tgz"
-  "version" "29.3.5"
 
 "@ag-grid-community/csv-export@~25.0.0":
   "integrity" "sha512-l3QU58KJ+2hWAlAw/loUZHPhcRKrLk343UG4B+VAvZmkz3OI9LWGNXNWmPy8pQ3PzPb91dZDvZ9HVD5lmgV3xw=="
@@ -57,7 +45,7 @@
   dependencies:
     "@ag-grid-community/core" "~25.0.0"
 
-"@ag-grid-enterprise/all-modules@25.0.0":
+"@ag-grid-enterprise/all-modules@^25.0.0":
   "integrity" "sha512-jqkLG+87OOYGKH8Zwla6482XgGRCPcnmvbTeKW4xbAarEjwC4avqxTAjBIRZ/CEdFkuttdYwPl7h+YYVYDTz3w=="
   "resolved" "https://registry.npmjs.org/@ag-grid-enterprise/all-modules/-/all-modules-25.0.0.tgz"
   "version" "25.0.0"
@@ -354,7 +342,7 @@
   "resolved" "https://registry.npmjs.org/@angular/animations/-/animations-9.1.0.tgz"
   "version" "9.1.0"
 
-"@angular/cdk@7.x || 8.x || 9.x", "@angular/cdk@9.2.0":
+"@angular/cdk@^9.2.0", "@angular/cdk@7.x || 8.x || 9.x":
   "integrity" "sha512-jeeznvNDpR9POuxzz8Y0zFvMynG9HCJo3ZPTqOjlOq8Lj8876+rLsHDvKEMeLdwlkdi1EweYJW1CLQzI+TwqDA=="
   "resolved" "https://registry.npmjs.org/@angular/cdk/-/cdk-9.2.0.tgz"
   "version" "9.2.0"

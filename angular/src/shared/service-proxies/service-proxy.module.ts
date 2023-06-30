@@ -57,8 +57,7 @@ import { ZeroTemplateHttpConfigurationService } from './zero-template-http-confi
         ApiServiceProxies.MstSleDishServiceProxy,
         ApiServiceProxies.MstSleIngredientcServiceProxy,
         ApiServiceProxies.SalesInvoiceServiceProxy,
-        
-
+        ApiServiceProxies.SalesOrderInvoiceServiceProxy,
 
 
         { provide: RefreshTokenService, useClass: ZeroRefreshTokenService },

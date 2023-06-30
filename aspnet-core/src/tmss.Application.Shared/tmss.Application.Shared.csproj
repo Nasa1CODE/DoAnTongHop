@@ -5,6 +5,13 @@
     <RootNamespace>tmss</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Sales\Order\ISalesOrderInvoiceAppService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sales\Order\ISalesOrderInvoiceAppService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp.Dapper" Version="5.6.0" />
     <PackageReference Include="Abp.Web.Common" Version="5.6.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>

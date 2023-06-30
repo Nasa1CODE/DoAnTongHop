@@ -18,7 +18,7 @@ export class AppNavigationService {
     getMenu(): AppMenu {
         return new AppMenu('MainMenu', 'MainMenu', [
             new AppMenuItem('Dashboard', 'Pages.Administration.Host.Dashboard', 'flaticon-line-graph', '/app/admin/hostDashboard'),
-            new AppMenuItem('Quản lý đặt món', 'Pages.DemoUiComponents', 'flaticon-shapes', ''),
+            new AppMenuItem('Quản lý đặt món', '', 'flaticon-shapes', '/app/main/sales/order'),
             new AppMenuItem('Quản lý hóa đơn', '', 'flaticon-shapes', '/app/main/sales/invoice'),
             new AppMenuItem('Quản lý món ăn', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/main/master/dish'),
             new AppMenuItem('Quản lý đồ uống', 'Pages.DemoUiComponents', 'flaticon-shapes', ''),

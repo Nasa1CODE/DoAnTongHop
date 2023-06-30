@@ -66,6 +66,7 @@ import { AgHeaderButtonGridComponent } from './grid/ag-header-button-grid/ag-hea
 import { TmssMultiColumnDropdownComponent } from './grid/tmss-multi-column-dropdown/tmss-multi-column-dropdown.component';
 import { TmssSelectGridModalComponent } from './grid/tmss-select-grid-modal/tmss-select-grid-modal.component';
 import { AgFilterGridComponent } from './grid/ag-filter-grid/ag-filter-grid.component';
+import { CarouselModule } from 'primeng/carousel';
 
 
 
@@ -135,7 +136,8 @@ import { AgFilterGridComponent } from './grid/ag-filter-grid/ag-filter-grid.comp
         AgHeaderButtonGridComponent,
         TmssMultiColumnDropdownComponent,
         TmssSelectGridModalComponent,
-        AgFilterGridComponent
+        AgFilterGridComponent,
+
         
     ],
     exports: [

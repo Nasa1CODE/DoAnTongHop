@@ -1,0 +1,77 @@
+<div id="container" style="overflow: hidden; padding-left: 0.5rem; padding-right: 0.5rem; padding-top: 1.5rem;" [busyIf]="isLoading">
+  <div class="ui-g-12 ph-0">
+      <div class="ui-g-12 ph-0">
+               <!-- SEARCH CONDITION -->
+          <fieldset class="fieldset-border ui-g-12  pr-1">
+              <div class="ui-g-12 ph-0 search">
+                  <div class="row">
+                 
+                  </div>
+                  
+              </div>
+          </fieldset>
+              <!-- END SEARCH -->
+              <div class="ui-g-12 ph-0">
+                  <div class="ui-g-12 pr-1">
+                      <span>
+                          <h6 class="card-header bg-card-header card-header-input pr-1">
+                              {{ 'DANH SÁCH BÀN ĂN' }}
+                          </h6>
+                      </span>
+                  </div>
+                  
+                  <fieldset class="fieldset-border ui-g-12 ">
+                      <div class="panel panel-default pt-1">
+                          <simple-ag-grid
+                              [paginationParams]="paginationParams"
+                              [columnDefs]="tableColDefs"
+                              [defaultColDef]="defaultColDef"
+                              [rowData]="rowData"
+                              (callBackEvent)="callBackOracleInvoiceBatchNameGrid($event)"
+                              (onChangeSelection)="onChangeSelection($event)"
+                              (changePaginationParams)="changePage($event)"
+                              [height]="'30vh'"
+                              [wrapText]="true"
+                              [frameworkComponents]="frameworkComponents">
+                          </simple-ag-grid>
+                      </div>
+                      <div class="text-left pr-1">
+                        <button
+                            class="tmss-btn tmss-footer-btn btn-outline-primary" (click)="createOrEditOrder()" >
+                            <i class="fa tmss-fa fa-plus mr-1"></i>{{ 'Đặt nón' }}
+                        </button>
+                        <button
+                        class="tmss-btn tmss-footer-btn btn-outline-primary"  >
+                        <i class="fa tmss-fa fa-plus mr-1"></i>{{ 'Thanh toán' }}
+                        </button>
+                        </div>
+                        <div class="ui-g-12 pr-1">
+                            <span>
+                                <h6 class="card-header bg-card-header card-header-input pr-1">
+                                    {{ 'DANH SÁCH BÀN ĂN' }}
+                                </h6>
+                            </span>
+                        </div>
+                      <div class="panel panel-default pt-1">
+                        <simple-ag-grid
+                        [paginationParams]="paginationParams"
+                        [columnDefs]="detailTableColDefs"
+                        [defaultColDef]="defaultColDef"
+                        [rowData]="rowDataDetail"
+                        (callBackEvent)="callBackByDetail($event)"
+                        (changePaginationParams)="changePageByDetail($event)"
+                        [height]="'30vh'"
+                        [wrapText]="true"
+                        [frameworkComponents]="frameworkComponents">
+                    </simple-ag-grid>
+                    </div>
+                  </fieldset>
+           
+              </div>
+      </div>
+  </div>
+</div>
+<create-or-edit-order #CreateOrEditOrderComponent></create-or-edit-order>
+
+
+
