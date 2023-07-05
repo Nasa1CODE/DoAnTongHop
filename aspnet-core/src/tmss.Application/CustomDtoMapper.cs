@@ -33,6 +33,7 @@ using tmss.Friendships.Dto;
 using tmss.Localization.Dto;
 using tmss.Master.Dish.Dto;
 using tmss.Master.Employee.Dto;
+using tmss.Master.Ingredient.Dto;
 using tmss.Master.Table.Dto;
 using tmss.MultiTenancy;
 using tmss.MultiTenancy.Dto;
@@ -179,6 +180,10 @@ namespace tmss
             configuration.CreateMap<CreateOrEditMstDishDto, MstDishAppService>();
             #endregion
 
+            #region Ingredient
+       
+            configuration.CreateMap<CreateOrEditMstIngredientDto, MstIngredientcAppService>();
+            #endregion
 
             #region Employee
             configuration.CreateMap<MstEmployeeDto, MstEmployeeAppService>();

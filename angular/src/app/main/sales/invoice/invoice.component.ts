@@ -160,6 +160,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
     clearTextSearch() { 
        this.EmployeeId = -1;
        this.TableId = -1;
+       this.search();
     }
 
     

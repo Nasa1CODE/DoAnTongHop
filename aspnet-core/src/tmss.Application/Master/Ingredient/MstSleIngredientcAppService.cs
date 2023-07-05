@@ -34,9 +34,11 @@ namespace tmss.Master.Ingredient
         //CREATE
         private async Task Create(CreateOrEditMstIngredientDto input)
         {
-            var mainObj = ObjectMapper.Map<MstEmployeeAppService>(input);
+           /* var mainObj = ObjectMapper.Map<MstEmployeeAppService>(input);
 
-            await CurrentUnitOfWork.GetDbContext<tmssDbContext>().AddAsync(mainObj);
+            await CurrentUnitOfWork.GetDbContext<tmssDbContext>().AddAsync(mainObj);*/
+            var newRecord = ObjectMapper.Map<MstIngredientcAppService>(input);
+            await _mstIngredientcAppService.InsertAsync(newRecord);
         }
 
         // EDIT

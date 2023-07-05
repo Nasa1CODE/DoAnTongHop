@@ -15,6 +15,7 @@ import { finalize } from 'rxjs/operators';
 import { ClientSideRowModelModule } from "@ag-grid-enterprise/all-modules";
 import { DatePipe } from "@angular/common";
 import { CreateOrEditOrderComponent } from "./create-or-edit-order.component";
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
     templateUrl: './order.component.html',
@@ -23,7 +24,7 @@ import { CreateOrEditOrderComponent } from "./create-or-edit-order.component";
     animations: [appModuleAnimation()]
 })
 export class OrderComponent extends AppComponentBase implements OnInit {
-  
+    @ViewChild('createOrEditModal', { static: true }) modal: ModalDirective | undefined;
     @ViewChild('paginator', { static: true }) paginator: Paginator;
      @ViewChild('CreateOrEditOrderComponent', { static: true }) CreateOrEditOrderComponent: CreateOrEditOrderComponent;
     paginationParams: PaginationParamsModel = { pageNum: 1, pageSize: 20, totalCount: 0, totalPage: 0, sorting: '', skipCount: 0 };
@@ -52,6 +53,7 @@ export class OrderComponent extends AppComponentBase implements OnInit {
     listTableType = [];
     showAdvanceFilter: boolean = false;
     rowDataDetail: MstDishDetailDto[] = [];
+    totalDish = 0;
     listOrderId;
     constructor(
         injector: Injector,
@@ -216,6 +218,25 @@ export class OrderComponent extends AppComponentBase implements OnInit {
         })
     }
 
+    getTotal(){
+        var total = 0;
+        this._serviceOrder.getAllDishDetail(
+            this.listOrderId,
+            '',
+            this.paginationParamsDetail.skipCount,
+            this.paginationParamsDetail.pageSize
+        ).subscribe( (result) => {
+            this.paginationParamsDetail.totalCount = result.totalCount;
+            console.log(this.rowDataDetail);
+            this.rowDataDetail = result.items;
+            for(var item in result.items){
+                //this.totalDish +=  this.rowDataDetail[0].price;
+            }
+            
+            this.paginationParamsDetail.totalPage = ceil(result.totalCount / (this.paginationParamsDetail.pageSize ?? 0));
+        })
+    }
+
     callBackByDetail(params) {
         this.dataParamsbyDetail = params;
         this.dataParamsbyDetail.api.paginationSetPageSize(
@@ -246,9 +267,12 @@ export class OrderComponent extends AppComponentBase implements OnInit {
         this.CreateOrEditOrderComponent.show(this.listOrderId);
     }
 
-    // getTotalPrice(){
-    //     this._serviceOrder.getAllDishDetail()
-    // }
+    getTotalPrice(){
+        this.notify.info(this.l('Thanh toán thành công'));
+      
+        this.modal?.hide();
+     
+    }
 
 
 
