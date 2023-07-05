@@ -20,13 +20,13 @@ export class AppNavigationService {
             new AppMenuItem('Dashboard', 'Pages.Administration.Host.Dashboard', 'flaticon-line-graph', '/app/admin/hostDashboard'),
             new AppMenuItem('Quản lý đặt món', '', 'flaticon-shapes', '/app/main/sales/order'),
             new AppMenuItem('Quản lý hóa đơn', '', 'flaticon-shapes', '/app/main/sales/invoice'),
-            new AppMenuItem('Quản lý món ăn', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/main/master/dish'),
+            new AppMenuItem('Quản lý món ăn', '', 'flaticon-shapes', '/app/main/master/dish'),
            // new AppMenuItem('Quản lý đồ uống', 'Pages.DemoUiComponents', 'flaticon-shapes', ''),
             new AppMenuItem('Quản lý bàn ăn', '', 'flaticon-shapes', '/app/main/master/table-dish'),
-            new AppMenuItem('Quản lý nguyên liệu', '', 'flaticon-shapes', '/app/main/master/ingredient'),
+            new AppMenuItem('Quản lý nguyên liệu', 'Pages.Administration.Users', 'flaticon-shapes', '/app/main/master/ingredient'),
             //new AppMenuItem('Quản lý nhà cung cấp', 'Pages.DemoUiComponents', 'flaticon-shapes', ''),
-            new AppMenuItem('Quản lý nhân viên', '','flaticon-shapes', '/app/main/master/employee'),
-            new AppMenuItem('Quản lý thống kê', 'Pages.DemoUiComponents', 'flaticon-shapes', ''),
+            new AppMenuItem('Quản lý nhân viên', 'Pages.Administration.Users','flaticon-shapes', '/app/main/master/employee'),
+            new AppMenuItem('Quản lý thống kê','Pages.Administration.Users', 'Pages.DemoUiComponents', 'flaticon-shapes', ),
 
 
            // new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
